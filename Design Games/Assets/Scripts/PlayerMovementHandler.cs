@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementHandler : MonoBehaviour
 {
+    private static PlayerMovementHandler Instance;
+    public static PlayerMovementHandler _instance { get => Instance; }
+
     [Header("Walking Variables")]
     [SerializeField] private float _maxWalkSpeed;
     [SerializeField] private float _walkAcceleration;
@@ -16,14 +19,18 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private Vector2 _moveVelocity;
 
-    private bool _isFacingRight, _isSwimming;
+    private bool _isFacingRight;
+
+    public bool _isSwimming { get; private set; }
 
     private Rigidbody2D _playerRigidbody;
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         _playerRigidbody = GetComponent<Rigidbody2D>();
-        TogglePlayerMovementType();
     }
 
     public void TogglePlayerMovementType()

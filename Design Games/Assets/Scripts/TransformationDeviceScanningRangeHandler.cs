@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 public class TransformationDeviceScanningHandler : MonoBehaviour
 {
-    [Header("References")]
+    private static TransformationDeviceScanningHandler Instance;
+    public static TransformationDeviceScanningHandler _instance { get => Instance; }
+
+    [Header("Toggable Variables")]
     [SerializeField] private Color _scanningColor;
     [SerializeField] private Color _normalColor;
 
@@ -18,6 +21,9 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -35,11 +41,16 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
 
     private void Update()
     {
-        if (_creatureInRange != null && PlayerInputManager.scanIsPressed)
+        if (PlayerInputManager.scanIsPressed)
         {
+            if (!PlayerMovementHandler._instance._isSwimming) return;
+
             _spriteRenderer.color = _scanningColor;
 
+            if (_creatureInRange == null) return;
+
             float currentTotal = 0;
+
             foreach (var val in _storedCreatures.Values) currentTotal += val;
 
             if (currentTotal >= _dataMaximum) return;

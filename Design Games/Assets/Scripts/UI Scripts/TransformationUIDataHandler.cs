@@ -87,11 +87,8 @@ public class TransformationUIDataHandler : MonoBehaviour
     {
         if (_creatureData.Count == 0) return;
 
-        TransformationDeviceScanningHandler dataHandler = FindFirstObjectByType<TransformationDeviceScanningHandler>();
-        if (dataHandler == null) return;
-
-        float totalData = dataHandler.GetCurrentTotal();
-        float dataMaximum = dataHandler.GetDataMaximum();
+        float totalData = TransformationDeviceScanningHandler._instance.GetCurrentTotal();
+        float dataMaximum = TransformationDeviceScanningHandler._instance.GetDataMaximum();
 
         if (totalData == 0 || dataMaximum == 0) return;
 

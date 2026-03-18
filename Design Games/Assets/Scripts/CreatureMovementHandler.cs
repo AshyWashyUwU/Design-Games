@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class CreatureMovementHandler : MonoBehaviour, ICreature
+public class CreatureMovementHandler : MonoBehaviour
 {
-    [SerializeField] private CreatureData _creature;
-
     private float _dirX, _speed;
 
     private Rigidbody2D _rigidBody;
@@ -11,29 +9,24 @@ public class CreatureMovementHandler : MonoBehaviour, ICreature
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _dirX = 2f;
-        _speed = 2f;
+        _dirX = 1.3f;
+        _speed = 1.3f;
     }
 
     private void Update()
     {
         if (transform.position.x < -10f)
         {
-            _dirX = 2f;
+            _dirX = 1.3f;
         }
         else if (transform.position.x > 10)
         {
-            _dirX = -2f;
+            _dirX = -1.3f;
         }
     }
 
     private void FixedUpdate()
     {
         _rigidBody.linearVelocity = new Vector2(_dirX * _speed, _rigidBody.linearVelocity.y);
-    }
-
-    public CreatureData GetCreatureData()
-    {
-        return _creature;
     }
 }
