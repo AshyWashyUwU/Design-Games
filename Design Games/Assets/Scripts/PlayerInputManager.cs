@@ -7,24 +7,24 @@ public class PlayerInputManager : MonoBehaviour
 
     public static Vector2 movement;
     public static bool moveIsHeld;
-    public static bool interactIsPressed;
+    public static bool scanIsPressed;
 
     private InputAction _moveAction;
-    private InputAction _interactAction;
+    private InputAction _scanAction;
 
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
 
         _moveAction = PlayerInput.actions["Move"];
-        _interactAction = PlayerInput.actions["Interact"];
+        _scanAction = PlayerInput.actions["ScanCreature"];
     }
 
     private void Update()
     {
         movement = _moveAction.ReadValue<Vector2>();
 
-        interactIsPressed = _interactAction.WasPressedThisFrame();
+        scanIsPressed = _scanAction.IsPressed();
         moveIsHeld = _moveAction.IsPressed();
     }
 }

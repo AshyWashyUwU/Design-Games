@@ -16,7 +16,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "ScanCreature",
                     "type": "Button",
                     "id": "b44a674b-8388-4d19-a73d-6d5b77032ad5",
                     "expectedControlType": "",
@@ -161,22 +161,22 @@
                 {
                     "name": "",
                     "id": "472e3d2d-596e-4c1d-9a6c-965bebeae987",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Interact",
+                    "action": "ScanCreature",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "41c3f786-55c6-4b0d-a064-afa73293f547",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Interact",
+                    "action": "ScanCreature",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
