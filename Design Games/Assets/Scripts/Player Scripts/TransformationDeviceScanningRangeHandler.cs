@@ -19,12 +19,15 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
     private Dictionary<CreatureData, float> _storedCreatures = new Dictionary<CreatureData, float>();
     private CreatureData _creatureInRange;
 
+    private Collider2D _collider;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D _collision)
@@ -46,6 +49,8 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
             if (!PlayerMovementHandler._instance._isSwimming) return;
 
             _spriteRenderer.color = _scanningColor;
+
+            _collider.enabled = true;
 
             if (_creatureInRange == null) return;
 
@@ -72,6 +77,8 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
         }
         else
         {
+            _collider.enabled = false;
+
             _spriteRenderer.color = _normalColor;
         }
     }

@@ -1,18 +1,26 @@
 using UnityEngine;
 
-public class TogglePlayerMovementHandler : MonoBehaviour
+public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform _playerTeleportPoint;
 
-    private void OnTriggerEnter2D(Collider2D _other)
+    [SerializeField] private string _customText;
+    [SerializeField] private Vector3 _customOffset;
+
+    public void Interact(GameObject _interactor)
     {
-        if (_other.GetComponent<PlayerMovementHandler>())
-        {
-            _other.transform.position = _playerTeleportPoint.transform.position;
+        PlayerMovementHandler._instance.GetPlayerTransform().position = _playerTeleportPoint.transform.position;
 
-            PlayerMovementHandler _player = _other.GetComponent<PlayerMovementHandler>();
+        PlayerMovementHandler._instance.TogglePlayerMovementType();
+    }
 
-            _player.TogglePlayerMovementType();
-        }
+    public string GetInteractText()
+    {
+        return _customText;
+    }
+
+    public Vector3 GetInteractOffset()
+    {
+        return _customOffset;
     }
 }

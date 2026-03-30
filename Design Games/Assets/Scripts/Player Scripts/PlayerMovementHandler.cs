@@ -105,4 +105,9 @@ public class PlayerMovementHandler : MonoBehaviour
 
         transform.localScale = _scale;
     }
+
+    public Transform GetPlayerTransform()
+    {
+        return transform;
+    }
 }

@@ -11,8 +11,6 @@ public class TransformationUIOpenCloseHandler : MonoBehaviour
 
     private TextMeshProUGUI _openCloseButtonText;
 
-    private bool _uiIsOpen;
-
     private void Awake()
     {
         _openCloseButtonText = _openCloseButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();

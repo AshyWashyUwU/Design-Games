@@ -10,6 +10,7 @@ public class TransformationUIDataHandler : MonoBehaviour
 
     [Header("Pie Chart References")]
     [SerializeField] private GameObject _creaturePieChartPrefab;
+    [SerializeField] private GameObject _creaturePieChartTextPrefab;
     [SerializeField] private Transform _pieChartParent;
     [SerializeField] private TextMeshProUGUI _totalDataText;
 
@@ -64,6 +65,10 @@ public class TransformationUIDataHandler : MonoBehaviour
             sliceObj.transform.localScale = Vector3.one;
             sliceObj.transform.localRotation = Quaternion.identity;
 
+            GameObject textObj = Instantiate(_creaturePieChartTextPrefab, _pieChartParent.transform);
+            textObj.transform.localScale = Vector3.one;
+            textObj.transform.localRotation = Quaternion.identity;
+
             Image sliceImage = sliceObj.GetComponent<Image>();
             sliceImage.color = GetColorFromCreature(creature);
             sliceImage.fillAmount = 0f;
@@ -75,6 +80,9 @@ public class TransformationUIDataHandler : MonoBehaviour
                 currentFill = 0f,
                 targetFill = 0f
             };
+
+            sliceObj.GetComponent<PiechartCreatureNameHandler>().SetCreatureData(creature);
+            sliceObj.GetComponent<PiechartCreatureNameHandler>().SetCreatureNameText(textObj.GetComponent<TextMeshProUGUI>());
         }
     }
 
