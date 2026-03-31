@@ -19,7 +19,7 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private Vector2 _moveVelocity;
 
-    private bool _isFacingRight;
+    private bool _isFacingRight, _immobilized;
 
     public bool _isSwimming { get; private set; }
 
@@ -31,6 +31,16 @@ public class PlayerMovementHandler : MonoBehaviour
         else Destroy(gameObject);
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void ToggleImmobilization()
+    {
+        _immobilized = !_immobilized;
+    }
+
+    public bool GetPlayerImmobilization()
+    {
+        return _immobilized;
     }
 
     public void TogglePlayerMovementType()
@@ -66,6 +76,13 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void HandleGroundMovement(float _horizontal)
     {
+        if (_immobilized) 
+        { 
+            _playerRigidbody.linearVelocity = new Vector2(0, 0);
+
+            return;
+        }
+
         float _targetSpeed = _horizontal * _maxWalkSpeed;
         float _newX = Mathf.Lerp(_playerRigidbody.linearVelocity.x, _targetSpeed, (_horizontal != 0 ? _walkAcceleration : _walkDeceleration) * Time.fixedDeltaTime);
 

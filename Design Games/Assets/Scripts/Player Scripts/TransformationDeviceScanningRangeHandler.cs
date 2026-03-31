@@ -10,7 +10,7 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
     [SerializeField] private Color _scanningColor;
     [SerializeField] private Color _normalColor;
 
-    private float _dataMaximum = 100f;
+    private float _dataMaximum = 1000f;
     private float _totalDataAmount = 0f;
     private float _dataAddAmount = 0.01f;
 
@@ -33,6 +33,9 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D _collision)
     {
         ICreature _creatureComponent = _collision.GetComponent<ICreature>();
+
+        if (_creatureInRange != null) return;
+
         if (_creatureComponent != null) _creatureInRange = _creatureComponent.GetCreatureData();
     }
 
@@ -90,5 +93,35 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
         float total = 0;
         foreach (var val in _storedCreatures.Values) total += val;
         return total;
+    }
+
+    public Dictionary<CreatureData, float> GetStoredCreatures()
+    {
+        return new Dictionary<CreatureData, float>(_storedCreatures);
+    }
+
+    public void UploadAllDataToComputer()
+    {
+        var computer = ComputerDataHolder._instance;
+
+        foreach (var pair in _storedCreatures)
+        {
+            CreatureData creature = pair.Key;
+
+            float amount = pair.Value;
+
+            float existing = computer.GetCreatureDataAmount(creature);
+
+            float newAmount = existing + amount;
+
+            newAmount = Mathf.Clamp(newAmount, 0f, creature._creatureDataMaximum);
+
+            computer.UploadCreatureData(creature, newAmount);
+        }
+
+        _storedCreatures.Clear();
+        _totalDataAmount = 0f;
+
+        TransformationUIDataHandler._instance.ClearUI();
     }
 }

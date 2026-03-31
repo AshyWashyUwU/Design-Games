@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class CreatureData : ScriptableObject
 {
     [Header("Basic Creature Data")]
-    public float _researchRequired;
+    public float _creatureDataMaximum;
     public CreatureType _creatureType;
 
     [Header("Advanced Creature Data")]

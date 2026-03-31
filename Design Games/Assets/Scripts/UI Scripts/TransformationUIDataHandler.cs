@@ -134,4 +134,29 @@ public class TransformationUIDataHandler : MonoBehaviour
         float value = 0.95f;
         return Color.HSVToRGB(hue, saturation, value);
     }
+
+    public void ClearUI()
+    {
+        foreach (var slice in _creatureSlices.Values)
+        {
+            if (slice.sliceTransform != null)
+            {
+                Destroy(slice.sliceTransform.gameObject);
+            }
+        }
+
+        foreach (Transform child in _pieChartParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        _creatureSlices.Clear();
+        _creatureOrder.Clear();
+        _creatureData.Clear();
+
+        if (_totalDataText != null)
+        {
+            _totalDataText.text = "Data: 0%";
+        }
+    }
 }
