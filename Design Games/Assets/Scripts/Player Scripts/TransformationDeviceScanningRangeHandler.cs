@@ -10,7 +10,7 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
     [SerializeField] private Color _scanningColor;
     [SerializeField] private Color _normalColor;
 
-    private float _dataMaximum = 1000f;
+    private float _dataMaximum = 100f;
     private float _totalDataAmount = 0f;
     private float _dataAddAmount = 0.01f;
 

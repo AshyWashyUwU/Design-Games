@@ -9,7 +9,7 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
     [SerializeField] private GameObject _buttonPrefab;
     [SerializeField] private Transform _buttonParent;
 
-    private List<GameObject> _spawnedButtons = new List<GameObject>();
+    public List<GameObject> _spawnedButtons = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -46,7 +46,7 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
 
             var ui = button.GetComponent<EncyclopediaUIButtonHandler>();
 
-            ui.SetCreatureButton(percent, _creatureNum, creature.name);
+            ui.SetCreatureButton(creature, percent, _creatureNum, creature.name);
         }
     }
 }

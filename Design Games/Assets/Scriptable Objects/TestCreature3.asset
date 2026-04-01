@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac856e634b08b949a0e1bd3f66f1bf0, type: 3}
   m_Name: TestCreature3
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
-  _creatureDataMaximum: 100
+  _creatureDataMaximum: 16
   _creatureType: 0
-  _creaturePrey: []
+  _creatureDescription: This is a test creature 3.
+  _creatureSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  _creaturePrey:
+  - {fileID: 11400000, guid: 62cd16820d5ee184ebf24fe3bd4cf664, type: 2}
+  _creatureLayers: 0400000002000000

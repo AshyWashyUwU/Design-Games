@@ -7,9 +7,12 @@ public class CreatureData : ScriptableObject
     [Header("Basic Creature Data")]
     public float _creatureDataMaximum;
     public CreatureType _creatureType;
+    public string _creatureDescription;
+    public Sprite _creatureSprite;
 
     [Header("Advanced Creature Data")]
     public List<CreatureData> _creaturePrey;
+    public List<int> _creatureLayers;
 }
 
 public enum CreatureType
