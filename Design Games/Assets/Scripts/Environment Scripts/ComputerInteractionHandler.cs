@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class ComputerInteractionHandler : MonoBehaviour, IInteractable
 {
-    [SerializeField] private UIMenuID _targetMenu;
+    [Header("References")]
+    [SerializeField] private UIMenuID _computerMenu;
 
     public void Interact(GameObject _interactor)
     {
-        if (UIMenuSwapHandler._instance._currentMenu == UIMenuSwapHandler._instance._startingMenu) UIMenuSwapHandler._instance.OpenMenu(_targetMenu);
+        if (UIMenuSwapHandler._instance._currentMenu == UIMenuSwapHandler._instance._startingMenu) UIMenuSwapHandler._instance.OpenMenu(_computerMenu);
 
         else UIMenuSwapHandler._instance.CloseMenu();
     }

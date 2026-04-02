@@ -11,6 +11,7 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
     [SerializeField] private Color _normalColor;
 
     private float _dataMaximum = 100f;
+    private float _dataScanRange = 7f;
     private float _totalDataAmount = 0f;
     private float _dataAddAmount = 0.01f;
 
@@ -23,11 +24,33 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+    }
+
+    public void UpdateDataCollectionAmount(float _newCollectionAmount)
+    {
+        _dataAddAmount = _newCollectionAmount;
+    }
+
+    public void UpdateDataMaximum(float _newDataMaximum)
+    {
+        _storedCreatures.Clear();
+        _totalDataAmount = 0f;
+
+        TransformationUIDataHandler._instance.ClearUI();
+
+        _dataMaximum = _newDataMaximum;
+    }
+
+    public void UpdateDataScanRange(float _newScanRange)
+    {
+        _dataScanRange = _newScanRange;
     }
 
     private void OnTriggerEnter2D(Collider2D _collision)
@@ -47,9 +70,11 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInputManager.scanIsPressed)
+        if (PlayerInputManager._scanIsPressed)
         {
             if (!PlayerMovementHandler._instance._isSwimming) return;
+
+            transform.localScale = new Vector2(_dataScanRange, _dataScanRange);
 
             _spriteRenderer.color = _scanningColor;
 

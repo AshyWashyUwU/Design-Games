@@ -69,7 +69,7 @@ public class UIMenuSwapHandler : MonoBehaviour
 
     private void CheckImmobilization(UIPanelHandler _nextMenu)
     {
-        if (_nextMenu._playerCanMove == PlayerMovementHandler._instance.GetPlayerImmobilization())
+        if (_nextMenu._playerCanMove == PlayerMovementHandler._instance._immobilized)
         {
             PlayerMovementHandler._instance.ToggleImmobilization();
         }

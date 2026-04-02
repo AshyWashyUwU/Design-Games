@@ -5,10 +5,10 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInput PlayerInput;
 
-    public static Vector2 movement;
-    public static bool moveIsHeld;
-    public static bool interactIsPressed;
-    public static bool scanIsPressed;
+    public static Vector2 _movement;
+    public static bool _moveIsHeld;
+    public static bool _interactIsPressed;
+    public static bool _scanIsPressed;
 
     private InputAction _moveAction;
     private InputAction _interactAction;
@@ -25,10 +25,10 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
-        movement = _moveAction.ReadValue<Vector2>();
+        _movement = _moveAction.ReadValue<Vector2>();
 
-        moveIsHeld = _moveAction.IsPressed();
-        interactIsPressed = _interactAction.WasPressedThisFrame();
-        scanIsPressed = _scanAction.IsPressed();
+        _moveIsHeld = _moveAction.IsPressed();
+        _interactIsPressed = _interactAction.WasPressedThisFrame();
+        _scanIsPressed = _scanAction.IsPressed();
     }
 }

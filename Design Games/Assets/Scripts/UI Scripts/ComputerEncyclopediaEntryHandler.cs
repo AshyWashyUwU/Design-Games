@@ -23,6 +23,12 @@ public class ComputerEncyclopediaEntryHandler : MonoBehaviour
 
     [SerializeField] private List<Image> _colorBoxes = new List<Image>();
 
+    [SerializeField] private UIMenuID _targetMenu;
+
+    public bool _computerMode = false;
+
+    private int _computerSlotNumber;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,108 +37,138 @@ public class ComputerEncyclopediaEntryHandler : MonoBehaviour
         }
     }
 
+    public void ChangeComputerMode(int _newComputerSlotNumber)
+    {
+        _computerMode = !_computerMode;
+
+        ComputerUIEncyclopediaHandler._instance.ChangeNotTransformButtons();
+
+        if (!_computerMode) 
+        {
+            _computerSlotNumber = 0;
+        }
+        else 
+        {
+            _computerSlotNumber = _newComputerSlotNumber;
+        }
+    }
+
+    public void ForceOutComputerMode()
+    {
+        _computerMode = false;
+    }
+
     public void ShowEncyclopediaEntry(CreatureData _creature, float _dataPercentage, Color _unlockedColor)
     {
-        for (int i = 0; i < _colorBoxes.Count; i++)
+        if (!_computerMode)
         {
-            _colorBoxes[i].color = _unlockedColor;
-        }
-
-        if (_dataPercentage > 0)
-        {
-            _creatureNameText.text = _creature.name;
-            _researchRequiredText.text = "Research Required: " + _creature._creatureDataMaximum + " GB";
-
-            _creatureImage.gameObject.SetActive(true);
-
-            _creatureImage.sprite = _creature._creatureSprite;
-
-            _creatureNoImageText.SetActive(false);
-        }
-        else
-        {
-            _creatureNameText.text = "???";
-            _researchRequiredText.text = "Research Required: ???";
-
-            _creatureImage.gameObject.SetActive(false);
-
-            _creatureNoImageText.SetActive(true);
-        }
-
-        if (_dataPercentage > 25)
-        {
-            _creatureTypeText.text = "Type: " + GetCreatureType(_creature._creatureType.ToString());
-
-            string _creaturePreyList = "";
-
-            if (_creature._creaturePrey.Count != 0)
+            for (int i = 0; i < _colorBoxes.Count; i++)
             {
-                for (int i = 0; i < _creature._creaturePrey.Count; i++)
-                {
-                    if (i != 0 && i != _creature._creaturePrey.Count)
-                    {
-                        _creaturePreyList = _creaturePreyList + ", " + _creature._creaturePrey[i].name;
-                    }
-                    else
-                    {
-                        _creaturePreyList = _creaturePreyList + " " + _creature._creaturePrey[i].name;                    
-                    }
-                }
+                _colorBoxes[i].color = _unlockedColor;
+            }
+
+            if (_dataPercentage > 0)
+            {
+                _creatureNameText.text = _creature.name;
+                _researchRequiredText.text = "Research Required: " + _creature._creatureDataMaximum + " GB";
+
+                _creatureImage.gameObject.SetActive(true);
+
+                _creatureImage.sprite = _creature._creatureSprite;
+
+                _creatureNoImageText.SetActive(false);
             }
             else
             {
-                _creaturePreyList = " N/A";
+                _creatureNameText.text = "???";
+                _researchRequiredText.text = "Research Required: ???";
+
+                _creatureImage.gameObject.SetActive(false);
+
+                _creatureNoImageText.SetActive(true);
             }
 
-            _creaturePreyText.text = "Prey:" + _creaturePreyList;
-
-            string _creaturePredatorList = "";
-
-            for (int i = 0; i < CreatureDataHolder._instance.GetCreatureList().Count; i++)
+            if (_dataPercentage > 25)
             {
-                for (int j = 0; j < CreatureDataHolder._instance.GetCreatureList()[i]._creaturePrey.Count; j++)
+                _creatureTypeText.text = "Type: " + GetCreatureType(_creature._creatureType.ToString());
+
+                string _creaturePreyList = "";
+
+                if (_creature._creaturePrey.Count != 0)
                 {
-                    if (CreatureDataHolder._instance.GetCreatureList()[i]._creaturePrey[j].name == _creature.name)
+                    for (int i = 0; i < _creature._creaturePrey.Count; i++)
                     {
-                        if (i != 0 && i != CreatureDataHolder._instance.GetCreatureList()[j]._creaturePrey.Count)
+                        if (i != 0 && i != _creature._creaturePrey.Count)
                         {
-                            _creaturePredatorList = _creaturePredatorList + ", " + CreatureDataHolder._instance.GetCreatureList()[i].name;
+                            _creaturePreyList = _creaturePreyList + ", " + _creature._creaturePrey[i].name;
                         }
                         else
                         {
-                            _creaturePredatorList = _creaturePredatorList + " " + CreatureDataHolder._instance.GetCreatureList()[i].name;
+                            _creaturePreyList = _creaturePreyList + " " + _creature._creaturePrey[i].name;                    
                         }
                     }
                 }
-            }
-
-            _creaturePredatorText.text = "Predator(s):" + _creaturePredatorList;
-
-            string _creatorHabitatList = "";
-
-            for (int i = 0; i < _creature._creatureLayers.Count; i++)
-            {
-                if (i != 0 && i != _creature._creatureLayers.Count)
-                {
-                    _creatorHabitatList = _creatorHabitatList + ", " + "Layer " + _creature._creatureLayers[i];
-                }
                 else
                 {
-                    _creatorHabitatList = _creatorHabitatList + " " + "Layer " + _creature._creatureLayers[i];
+                    _creaturePreyList = " N/A";
                 }
+
+                _creaturePreyText.text = "Prey:" + _creaturePreyList;
+
+                string _creaturePredatorList = "";
+
+                for (int i = 0; i < CreatureDataHolder._instance.GetCreatureList().Count; i++)
+                {
+                    for (int j = 0; j < CreatureDataHolder._instance.GetCreatureList()[i]._creaturePrey.Count; j++)
+                    {
+                        if (CreatureDataHolder._instance.GetCreatureList()[i]._creaturePrey[j].name == _creature.name)
+                        {
+                            if (i != 0 && i != CreatureDataHolder._instance.GetCreatureList()[j]._creaturePrey.Count)
+                            {
+                                _creaturePredatorList = _creaturePredatorList + ", " + CreatureDataHolder._instance.GetCreatureList()[i].name;
+                            }
+                            else
+                            {
+                                _creaturePredatorList = _creaturePredatorList + " " + CreatureDataHolder._instance.GetCreatureList()[i].name;
+                            }
+                        }
+                    }
+                }
+
+                _creaturePredatorText.text = "Predator(s):" + _creaturePredatorList;
+
+                string _creatorHabitatList = "";
+
+                for (int i = 0; i < _creature._creatureLayers.Count; i++)
+                {
+                    if (i != 0 && i != _creature._creatureLayers.Count)
+                    {
+                        _creatorHabitatList = _creatorHabitatList + ", " + "Layer " + _creature._creatureLayers[i];
+                    }
+                    else
+                    {
+                        _creatorHabitatList = _creatorHabitatList + " " + "Layer " + _creature._creatureLayers[i];
+                    }
+                }
+
+                _creatureHabitatText.text = "Habitat:" + _creatorHabitatList;
+
+                _creatureDescriptionText.text = "Description: " + _creature._creatureDescription;
+            }
+            else
+            {
+                _creatureTypeText.text = "Type: ???";
+                _creaturePreyText.text = "Prey: ???";
+                _creaturePredatorText.text = "Predator(s): ???";
+                _creatureHabitatText.text = "Habitat: ???";
+                _creatureDescriptionText.text = "Description: ???";
             }
 
-            _creatureHabitatText.text = "Habitat:" + _creatorHabitatList;
-
-            _creatureDescriptionText.text = "Description: " + _creature._creatureDescription;
+            UIMenuSwapHandler._instance.OpenMenu(_targetMenu);
         }
         else
         {
-            _creatureTypeText.text = "Type: ???";
-            _creaturePreyText.text = "Prey: ???";
-            _creaturePredatorText.text = "Predator(s): ???";
-            _creatureHabitatText.text = "Habitat: ???";
-            _creatureDescriptionText.text = "Description: ???";
+
         }
     }
 

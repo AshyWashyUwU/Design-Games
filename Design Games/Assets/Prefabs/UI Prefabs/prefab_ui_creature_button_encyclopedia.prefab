@@ -368,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 4454663946629056283}
     - target: {fileID: 1202514019168790611, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1202514019168790611, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -382,10 +382,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8071361043340830554}
-    - target: {fileID: 1202514019168790611, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1137096605678886660}
     - target: {fileID: 1202514019168790611, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -570,9 +566,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3698091098268160413, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8071361043340830554}
-    - targetCorrespondingSourceObject: {fileID: 3698091098268160413, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1137096605678886660}
   m_SourcePrefab: {fileID: 100100000, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
 --- !u!114 &781731696392778208 stripped
 MonoBehaviour:
@@ -611,19 +604,6 @@ MonoBehaviour:
   _lockedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _innerButtonImage: {fileID: 4454663946629056283}
   _outerButtonImage: {fileID: 4121604902924336751}
---- !u!114 &1137096605678886660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6113823580153951149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c95d8be22f3a8f4483057a4f50d6181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIOpenPanelHandler
-  _targetMenu: 3
 --- !u!114 &6664460250872443777 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4320644380991099313, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}

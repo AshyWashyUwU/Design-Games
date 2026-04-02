@@ -5,11 +5,24 @@ using System.Collections.Generic;
 
 public class ComputerUIEncyclopediaHandler : MonoBehaviour
 {
+    private static ComputerUIEncyclopediaHandler Instance;
+
+    public static ComputerUIEncyclopediaHandler _instance { get => Instance; }
+
     [Header("References")]
     [SerializeField] private GameObject _buttonPrefab;
     [SerializeField] private Transform _buttonParent;
 
     public List<GameObject> _spawnedButtons = new List<GameObject>();
+    public List<GameObject> _notAbleToTransformButtons = new List<GameObject>();
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void OnEnable()
     {
@@ -18,12 +31,15 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
 
     private void RefreshUI()
     {
+        ComputerEncyclopediaEntryHandler._instance.ForceOutComputerMode();
+
         foreach (var btn in _spawnedButtons)
         {
             Destroy(btn);
         }
 
         _spawnedButtons.Clear();
+        _notAbleToTransformButtons.Clear();
 
         var creatures = CreatureDataHolder._instance.GetCreatureList();
 
@@ -47,6 +63,19 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
             var ui = button.GetComponent<EncyclopediaUIButtonHandler>();
 
             ui.SetCreatureButton(creature, percent, _creatureNum, creature.name);
+
+            if (percent < 70)
+            {
+                _notAbleToTransformButtons.Add(button);
+            }
+        }
+    }
+
+    public void ChangeNotTransformButtons()
+    {
+        foreach(GameObject button in _notAbleToTransformButtons)
+        {
+            button.SetActive(!button.activeSelf);
         }
     }
 }

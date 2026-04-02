@@ -10,8 +10,10 @@ public class CreatureDataHolder : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
     public List<CreatureData> GetCreatureList()

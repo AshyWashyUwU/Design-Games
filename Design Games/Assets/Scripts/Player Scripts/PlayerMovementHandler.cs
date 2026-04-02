@@ -6,29 +6,31 @@ public class PlayerMovementHandler : MonoBehaviour
     private static PlayerMovementHandler Instance;
     public static PlayerMovementHandler _instance { get => Instance; }
 
-    [Header("Walking Variables")]
-    [SerializeField] private float _maxWalkSpeed;
-    [SerializeField] private float _walkAcceleration;
-    [SerializeField] private float _walkDeceleration;
-    [SerializeField] private float _walkingGravityScale;
+    private float _maxWalkSpeed = 5;
+    private float _walkAcceleration = 25;
+    private float _walkDeceleration = 5;
+    private float _walkingGravityScale = 1;
 
-    [Header("Swimming Variables")]
-    [SerializeField] private float _maxSwimSpeed;
-    [SerializeField] private float _swimMoveForce;
-    [SerializeField] private float _swimmingGravityScale;
+    private float _maxSwimSpeed = 3;
+    private float _swimMoveForce = 3;
+    private float _swimmingGravityScale = 0.025f;
 
     private Vector2 _moveVelocity;
 
-    private bool _isFacingRight, _immobilized;
+    private bool _isFacingRight;
 
     public bool _isSwimming { get; private set; }
+
+    public bool _immobilized { get; private set; }
 
     private Rigidbody2D _playerRigidbody;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }
@@ -38,9 +40,10 @@ public class PlayerMovementHandler : MonoBehaviour
         _immobilized = !_immobilized;
     }
 
-    public bool GetPlayerImmobilization()
+    public void UpdateSwimSpeed(float _newSwimSpeed)
     {
-        return _immobilized;
+        _maxSwimSpeed = _newSwimSpeed;
+        _swimMoveForce = _newSwimSpeed;
     }
 
     public void TogglePlayerMovementType()
@@ -59,7 +62,7 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 _input = PlayerInputManager.movement;
+        Vector2 _input = PlayerInputManager._movement;
 
         if (_isSwimming)
         {
