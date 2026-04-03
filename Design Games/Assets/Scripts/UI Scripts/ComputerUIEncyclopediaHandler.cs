@@ -16,6 +16,10 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
     public List<GameObject> _spawnedButtons = new List<GameObject>();
     public List<GameObject> _notAbleToTransformButtons = new List<GameObject>();
 
+    public CreatureHotbarButtonHandler _storedCreatureButtonHandler;
+
+    [SerializeField] private CreatureHotbarHandler _hotbarHandler;
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +31,41 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
     private void OnEnable()
     {
         RefreshUI();
+
+        _storedCreatureButtonHandler = null;
+    }
+
+    public void UpdateStoredCreatureButtonWithNewCreature(CreatureData newCreature)
+    {
+        if (_storedCreatureButtonHandler == null) return;
+
+        int slot = _storedCreatureButtonHandler.GetCreatureSlotNum();
+
+        CreatureSlotHolder._instance.ChangeCreatureSlot(newCreature, slot);
+
+        _storedCreatureButtonHandler.SetSelected(false);
+        _storedCreatureButtonHandler = null;
+
+        _hotbarHandler.UpdateList();
+        RefreshUI();
+    }
+
+    public void UpdateStoredCreatureButton(CreatureHotbarButtonHandler newButton)
+    {
+        if (_storedCreatureButtonHandler == newButton)
+        {
+            newButton.SetSelected(false);
+            _storedCreatureButtonHandler = null;
+            return;
+        }
+
+        if (_storedCreatureButtonHandler != null)
+        {
+            _storedCreatureButtonHandler.SetSelected(false);
+        }
+
+        _storedCreatureButtonHandler = newButton;
+        _storedCreatureButtonHandler.SetSelected(true);
     }
 
     private void RefreshUI()

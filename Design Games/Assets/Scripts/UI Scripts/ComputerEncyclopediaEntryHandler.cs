@@ -168,7 +168,9 @@ public class ComputerEncyclopediaEntryHandler : MonoBehaviour
         }
         else
         {
+            ChangeComputerMode(0);
 
+            ComputerUIEncyclopediaHandler._instance.UpdateStoredCreatureButtonWithNewCreature(_creature);
         }
     }
 
