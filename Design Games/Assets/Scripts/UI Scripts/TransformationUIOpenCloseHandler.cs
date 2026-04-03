@@ -11,13 +11,19 @@ public class TransformationUIOpenCloseHandler : MonoBehaviour
 
     private TextMeshProUGUI _openCloseButtonText;
 
+    private Animator _animator;
+
     private void Awake()
     {
         _openCloseButtonText = _openCloseButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+
+        _animator = GetComponent<Animator>();
     }
 
     public void ToggleUIOpenClose()
     {
+        _animator.SetTrigger("Pop");
+
         _openableCreatureUI.SetActive(!_openableCreatureUI.activeSelf);
 
         if (_openableCreatureUI.activeSelf)

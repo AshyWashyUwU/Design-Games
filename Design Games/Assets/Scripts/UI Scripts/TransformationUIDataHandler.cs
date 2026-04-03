@@ -62,7 +62,7 @@ public class TransformationUIDataHandler : MonoBehaviour
             parentObj.transform.localRotation = Quaternion.identity;
 
             GameObject sliceObj = Instantiate(_creaturePieChartPrefab, parentObj.transform);
-            sliceObj.transform.localScale = Vector3.one;
+            sliceObj.transform.localScale = new Vector3(0.95f, 0.95f, 1);
             sliceObj.transform.localRotation = Quaternion.identity;
 
             GameObject textObj = Instantiate(_creaturePieChartTextPrefab, _pieChartParent.transform);

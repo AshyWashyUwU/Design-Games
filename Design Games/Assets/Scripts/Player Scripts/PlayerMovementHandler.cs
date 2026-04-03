@@ -15,6 +15,9 @@ public class PlayerMovementHandler : MonoBehaviour
     private float _swimMoveForce = 3;
     private float _swimmingGravityScale = 0.025f;
 
+    private float _maxTiltAngle = 15f;
+    private float _tiltSpeed = 5f;
+
     private Vector2 _moveVelocity;
 
     private bool _isFacingRight;
@@ -75,6 +78,8 @@ public class PlayerMovementHandler : MonoBehaviour
 
             HandleGroundMovement(_horizontal);
         }
+
+        ApplyTilt();
     }
 
     private void HandleGroundMovement(float _horizontal)
@@ -106,6 +111,35 @@ public class PlayerMovementHandler : MonoBehaviour
         {
             _playerRigidbody.linearVelocity = _playerRigidbody.linearVelocity.normalized * _maxSwimSpeed;
         }
+    }
+
+    private void ApplyTilt()
+    {
+        float targetAngle = 0f;
+
+        if (_isSwimming)
+        {
+            Vector2 input = PlayerInputManager._movement;
+
+            if (input.magnitude > 0.1f)
+            {
+                float horizontalTilt = -input.x * _maxTiltAngle;
+
+                float verticalTilt = input.y * (_maxTiltAngle * 0.5f);
+
+                targetAngle = horizontalTilt + verticalTilt;
+            }
+        }
+        else
+        {
+            float horizontalSpeed = _playerRigidbody.linearVelocity.x;
+            targetAngle = -horizontalSpeed * _maxTiltAngle / _maxWalkSpeed;
+        }
+
+        float currentAngle = transform.eulerAngles.z;
+        float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _tiltSpeed * Time.fixedDeltaTime);
+
+        transform.rotation = Quaternion.Euler(0, 0, newAngle);
     }
 
     private void FlipPlayer()
