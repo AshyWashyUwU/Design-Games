@@ -20,12 +20,16 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
 
     private bool _selected = false;
 
+    private Animator _animator;
+
     private void Awake()
     {
         _buttonImage = GetComponent<Image>();
+
+        _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
         if (_selected) SetSelected(!_selected);
     }
@@ -68,11 +72,15 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
             {
                 _buttonText.text = _storedCreature.name;
                 _buttonImage.color = _filledColor;
+
+                _animator.SetTrigger("Press");
             }
             else
             {
                 _buttonText.text = "(No creature)";
                 _buttonImage.color = _unselectedColor;
+
+                _animator.SetTrigger("Press");
             }
         }
     }
@@ -80,6 +88,8 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
     public void ButtonPress()
     {
         ComputerUIEncyclopediaHandler._instance.UpdateStoredCreatureButton(this);
+
+        _animator.SetTrigger("Press");
     }
 
     private enum CreatureButtonType

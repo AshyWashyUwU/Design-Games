@@ -36,7 +36,20 @@ public class EncyclopediaUIButtonHandler : MonoBehaviour
 
             if (_creaturePercent > 70)
             {
-                _innerButtonImage.color = _fullyUnlockedColor;
+                bool _isTransformation = false;
+
+                for(int i = 0; i < CreatureSlotHolder._instance._creatureSlots.Count; i++)
+                {
+                    if (CreatureSlotHolder._instance._creatureSlots[i] == _creature)
+                    {
+                        _isTransformation = true;
+                        _innerButtonImage.color = _isTransformationColor;
+                    }
+                    else if (!_isTransformation)
+                    {
+                        _innerButtonImage.color = _fullyUnlockedColor;
+                    }
+                }
             }
             else
             {

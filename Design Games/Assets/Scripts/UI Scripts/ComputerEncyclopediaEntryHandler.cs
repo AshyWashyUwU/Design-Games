@@ -37,20 +37,9 @@ public class ComputerEncyclopediaEntryHandler : MonoBehaviour
         }
     }
 
-    public void ChangeComputerMode(int _newComputerSlotNumber)
+    public void ChangeComputerMode(bool _newComputerMode)
     {
-        _computerMode = !_computerMode;
-
-        ComputerUIEncyclopediaHandler._instance.ChangeNotTransformButtons();
-
-        if (!_computerMode) 
-        {
-            _computerSlotNumber = 0;
-        }
-        else 
-        {
-            _computerSlotNumber = _newComputerSlotNumber;
-        }
+        _computerMode = _newComputerMode;
     }
 
     public void ForceOutComputerMode()
@@ -168,7 +157,7 @@ public class ComputerEncyclopediaEntryHandler : MonoBehaviour
         }
         else
         {
-            ChangeComputerMode(0);
+            ChangeComputerMode(false);
 
             ComputerUIEncyclopediaHandler._instance.UpdateStoredCreatureButtonWithNewCreature(_creature);
         }

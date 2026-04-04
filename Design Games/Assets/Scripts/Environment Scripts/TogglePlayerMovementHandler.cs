@@ -51,7 +51,7 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 
             PlayerMovementHandler._instance.TogglePlayerMovementType();
 
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(0.5f);
 
             StartCoroutine(FadeLoadingScreen(0, _duration));
 

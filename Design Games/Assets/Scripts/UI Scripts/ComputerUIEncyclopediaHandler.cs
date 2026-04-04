@@ -20,6 +20,12 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
 
     [SerializeField] private CreatureHotbarHandler _hotbarHandler;
 
+    [SerializeField] private TextMeshProUGUI _noTransformationsText;
+
+    private bool _isActive = true;
+
+    int _creatureNum = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,7 +37,10 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
     private void OnEnable()
     {
         RefreshUI();
+    }
 
+    private void OnDisable()
+    {
         _storedCreatureButtonHandler = null;
     }
 
@@ -54,22 +63,33 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
     {
         if (_storedCreatureButtonHandler == newButton)
         {
+            _isActive = true;
+            ChangeNotTransformButtons();
+            ComputerEncyclopediaEntryHandler._instance.ChangeComputerMode(false);
             newButton.SetSelected(false);
             _storedCreatureButtonHandler = null;
             return;
         }
 
-        if (_storedCreatureButtonHandler != null)
+        if (newButton != _storedCreatureButtonHandler && _storedCreatureButtonHandler != null)
         {
             _storedCreatureButtonHandler.SetSelected(false);
         }
 
+        _isActive = false;
+        ComputerEncyclopediaEntryHandler._instance.ChangeComputerMode(true);
+
         _storedCreatureButtonHandler = newButton;
         _storedCreatureButtonHandler.SetSelected(true);
+
+        ChangeNotTransformButtons();
     }
 
     private void RefreshUI()
     {
+        _isActive = true;
+        _noTransformationsText.gameObject.SetActive(false);
+
         ComputerEncyclopediaEntryHandler._instance.ForceOutComputerMode();
 
         foreach (var btn in _spawnedButtons)
@@ -82,7 +102,7 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
 
         var creatures = CreatureDataHolder._instance.GetCreatureList();
 
-        int _creatureNum = 0;
+        _creatureNum = 0;
 
         foreach (var creature in creatures)
         {
@@ -110,11 +130,20 @@ public class ComputerUIEncyclopediaHandler : MonoBehaviour
         }
     }
 
-    public void ChangeNotTransformButtons()
+    private void ChangeNotTransformButtons()
     {
         foreach(GameObject button in _notAbleToTransformButtons)
         {
-            button.SetActive(!button.activeSelf);
+            button.SetActive(_isActive);
+        }
+
+        if (_creatureNum == _notAbleToTransformButtons.Count && !_isActive)
+        {
+            _noTransformationsText.gameObject.SetActive(true);
+        }
+        else
+        {
+           _noTransformationsText.gameObject.SetActive(false);
         }
     }
 }

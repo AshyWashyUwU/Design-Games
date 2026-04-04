@@ -65,6 +65,15 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ApplyTilt();
+
+        if (_immobilized) 
+        { 
+            _playerRigidbody.linearVelocity = new Vector2(0, 0);
+
+            return;
+        }
+
         Vector2 _input = PlayerInputManager._movement;
 
         if (_isSwimming)
@@ -78,8 +87,6 @@ public class PlayerMovementHandler : MonoBehaviour
 
             HandleGroundMovement(_horizontal);
         }
-
-        ApplyTilt();
     }
 
     private void HandleGroundMovement(float _horizontal)
