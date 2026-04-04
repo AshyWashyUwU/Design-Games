@@ -87,7 +87,14 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
 
     public void ButtonPress()
     {
-        ComputerUIEncyclopediaHandler._instance.UpdateStoredCreatureButton(this);
+        if (_creatureButtonType == CreatureButtonType.EncyclopediaButton)
+        {
+            ComputerUIEncyclopediaHandler._instance.UpdateStoredCreatureButton(this);
+        }
+        else if (_storedCreature != null)
+        {
+            TransformationDeviceHandler._instance.Transform(_storedCreature);
+        }
 
         _animator.SetTrigger("Press");
     }

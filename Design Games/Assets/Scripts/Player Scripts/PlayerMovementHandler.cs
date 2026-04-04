@@ -15,8 +15,8 @@ public class PlayerMovementHandler : MonoBehaviour
     private float _swimMoveForce = 3;
     private float _swimmingGravityScale = 0.025f;
 
-    private float _maxTiltAngle = 15f;
-    private float _tiltSpeed = 5f;
+    private float _maxTiltAngle = 15;
+    private float _tiltSpeed = 5;
 
     private Vector2 _moveVelocity;
 
@@ -27,6 +27,8 @@ public class PlayerMovementHandler : MonoBehaviour
     public bool _immobilized { get; private set; }
 
     private Rigidbody2D _playerRigidbody;
+
+    private int _lastHorizontalFacing = 1; // 1 = right, -1 = left
 
     private void Awake()
     {
@@ -55,7 +57,14 @@ public class PlayerMovementHandler : MonoBehaviour
 
         if (_isSwimming)
         {
-            _playerRigidbody.gravityScale = _swimmingGravityScale;
+            if (TransformationDeviceHandler._instance._currentTransformedCreature == null)
+            {
+                _playerRigidbody.gravityScale = _swimmingGravityScale;
+            }
+            else
+            {
+                _playerRigidbody.gravityScale = TransformationDeviceHandler._instance._currentTransformedCreature._creatureGravityScale;
+            }
         }
         else
         {
@@ -109,44 +118,96 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void HandleSwimmingMovement(Vector2 _input)
     {
+        float _swimForce;
+        float _maxSpeed;
+
+        if (TransformationDeviceHandler._instance._currentTransformedCreature == null)
+        {
+            _swimForce = _swimMoveForce;
+            _maxSpeed = _maxSwimSpeed;
+        }
+        else
+        {
+            _swimForce = TransformationDeviceHandler._instance._currentTransformedCreature._creatureSwimForce;
+            _maxSpeed = TransformationDeviceHandler._instance._currentTransformedCreature._creatureSwimMaxSpeed;
+        }
+
         if (_input != Vector2.zero)
         {
             _playerRigidbody.AddForce(_input.normalized * _swimMoveForce);
         }
 
-        if (_playerRigidbody.linearVelocity.magnitude > _maxSwimSpeed)
+        if (_playerRigidbody.linearVelocity.magnitude > _maxSpeed)
         {
-            _playerRigidbody.linearVelocity = _playerRigidbody.linearVelocity.normalized * _maxSwimSpeed;
+            _playerRigidbody.linearVelocity = _playerRigidbody.linearVelocity.normalized * _maxSpeed;
         }
     }
 
     private void ApplyTilt()
     {
         float targetAngle = 0f;
+        var transformedCreature = TransformationDeviceHandler._instance._currentTransformedCreature;
 
-        if (_isSwimming)
+        float tiltAngle;
+        float tiltSpeed;
+
+        if (transformedCreature == null || !_isSwimming)
         {
-            Vector2 input = PlayerInputManager._movement;
+            tiltAngle = _maxTiltAngle;
+            tiltSpeed = _tiltSpeed;
+        }
+        else
+        {
+            tiltAngle = transformedCreature._creatureMaxTiltAngle;
+            tiltSpeed = transformedCreature._creatureTiltSpeed;
+        }
 
+        Vector2 input = PlayerInputManager._movement;
+
+        if (transformedCreature != null)
+        {
             if (input.magnitude > 0.1f)
             {
-                float horizontalTilt = -input.x * _maxTiltAngle;
+                float horizontal = input.x;
+                float vertical = input.y;
 
-                float verticalTilt = input.y * (_maxTiltAngle * 0.5f);
+                if (horizontal > 0.1f) _lastHorizontalFacing = 1;
+                else if (horizontal < -0.1f) _lastHorizontalFacing = -1;
 
+                targetAngle = _lastHorizontalFacing == 1 ? -90f : 90f;
+
+                if (vertical > 0.1f)
+                {
+                    targetAngle += _lastHorizontalFacing == 1 ? 45f : -45f; // moving up
+                }
+                else if (vertical < -0.1f)
+                {
+                    targetAngle += _lastHorizontalFacing == 1 ? -45f : 45f; // moving down
+                }
+            }
+            else
+            {
+                targetAngle = _lastHorizontalFacing == 1 ? -90f : 90f;
+            }
+        }
+        else if (_isSwimming)
+        {
+            if (input.magnitude > 0.1f)
+            {
+                float horizontalTilt = -input.x * tiltAngle;
+                float verticalTilt = input.y * (tiltAngle * 0.5f);
                 targetAngle = horizontalTilt + verticalTilt;
             }
         }
         else
         {
             float horizontalSpeed = _playerRigidbody.linearVelocity.x;
-            targetAngle = -horizontalSpeed * _maxTiltAngle / _maxWalkSpeed;
+            targetAngle = -horizontalSpeed * tiltAngle / _maxWalkSpeed;
         }
 
         float currentAngle = transform.eulerAngles.z;
-        float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _tiltSpeed * Time.fixedDeltaTime);
-
-        transform.rotation = Quaternion.Euler(0, 0, newAngle);
+        float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, tiltSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
     }
 
     private void FlipPlayer()

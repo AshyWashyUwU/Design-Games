@@ -46,18 +46,24 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 
         if (_targetAlpha != 0)
         {
+            if (TransformationDeviceHandler._instance._currentTransformedCreature != null)
+            {
+                TransformationDeviceHandler._instance.Detransform();
+            }
 
             PlayerMovementHandler._instance.GetPlayerTransform().position = _playerTeleportPoint.transform.position;
 
             PlayerMovementHandler._instance.TogglePlayerMovementType();
 
-            yield return new WaitForSeconds(0.5f);
-
-            StartCoroutine(FadeLoadingScreen(0, _duration));
+            CameraPositionHandler._instance.ToggleCameraType();
 
             var lens = _camera.Lens;
             lens.OrthographicSize = _newLensSize;
             _camera.Lens = lens;
+
+            yield return new WaitForSeconds(0.25f);
+
+            StartCoroutine(FadeLoadingScreen(0, _duration));
         }
         else
         {

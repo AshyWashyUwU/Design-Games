@@ -14,6 +14,8 @@ public class UIMenuSwapHandler : MonoBehaviour
 
     public UIMenuID _currentMenu { get; private set; }
 
+    [SerializeField] private GameObject _backgroundBlur;
+
     private void Awake()
     {
         if (Instance == null)
@@ -72,6 +74,8 @@ public class UIMenuSwapHandler : MonoBehaviour
         if (_nextMenu._playerCanMove == PlayerMovementHandler._instance._immobilized)
         {
             PlayerMovementHandler._instance.ToggleImmobilization();
+
+            _backgroundBlur.SetActive(!_backgroundBlur.activeSelf);
         }
     }
 }
