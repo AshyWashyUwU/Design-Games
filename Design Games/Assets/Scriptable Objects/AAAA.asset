@@ -21,5 +21,14 @@ MonoBehaviour:
   _creatureType: 1
   _creatureDescription: This is a test creature 1.
   _creatureSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  _wanderMinTime: 1
+  _wanderMaxTime: 3
+  _wanderFlipChance: 0.1
+  _wanderVerticalRange: 0.2
+  _verticalTiltThreshold: 0.2
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _wallDetectionDistance: 0.5
   _creaturePrey: []
   _creatureLayers: 0200000003000000

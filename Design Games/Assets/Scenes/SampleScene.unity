@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 48664461}
   - component: {fileID: 48664463}
   - component: {fileID: 48664462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundTest (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,8 +881,8 @@ MonoBehaviour:
   - {fileID: 143788236}
   - {fileID: 812584535}
   _vignetteImage: {fileID: 48397702}
-  _transformTime: 10
-  _transformCooldownTime: 10
+  _transformTime: 30
+  _transformCooldownTime: 30
   _minCooldownPercent: 0.3
   _cooldownCurvePower: 1.5
   _warningThreshold: 11.5
@@ -1864,6 +1864,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _fleeRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _creatureData
+      value: 
+      objectReference: {fileID: 11400000, guid: 62cd16820d5ee184ebf24fe3bd4cf664, type: 2}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _detectionRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5748070698983171326, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
       propertyPath: _creature
       value: 
@@ -2632,7 +2644,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3841,6 +3853,14 @@ PrefabInstance:
     - target: {fileID: 2445617104520478540, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _creatureData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7132f40fabad59441b994c9c686b2936, type: 2}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _detectionRange
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5748070698983171326, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
       propertyPath: _creature
@@ -6488,7 +6508,7 @@ GameObject:
   - component: {fileID: 1227815052}
   - component: {fileID: 1227815054}
   - component: {fileID: 1227815053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundTest (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7677,7 +7697,7 @@ GameObject:
   - component: {fileID: 1380370342}
   - component: {fileID: 1380370344}
   - component: {fileID: 1380370343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundTest (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9367,7 +9387,7 @@ GameObject:
   - component: {fileID: 1481319686}
   - component: {fileID: 1481319688}
   - component: {fileID: 1481319687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundTest (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14176,6 +14196,14 @@ PrefabInstance:
     - target: {fileID: 2445617104520478540, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
       propertyPath: m_Name
       value: Creature1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812849457719268746, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: _detectionRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382411079251178995, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859877419704402414, guid: d7e845879e4d8674faf67e11cb3a0986, type: 3}
       propertyPath: m_LocalPosition.x

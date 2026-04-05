@@ -11,11 +11,24 @@ public class CreatureData : ScriptableObject
     public float _creatureMaxTiltAngle = 15;
     public float _creatureTiltSpeed = 5;
 
+    public float _creatureDetectionRange = 10f;
+    public float _creatureFleeRange = 5f;
+
     [Header("Basic Creature Data")]
     public float _creatureDataMaximum;
     public CreatureType _creatureType;
     public string _creatureDescription;
     public Sprite _creatureSprite;
+
+    [Header("AI Behaviour Settings")]
+    public float _wanderMinTime = 1f;
+    public float _wanderMaxTime = 3f;
+
+    [Range(0f, 1f)] public float _wanderFlipChance = 0.1f;
+
+    public float _wanderVerticalRange = 0.2f;
+    public float _verticalTiltThreshold = 0.2f;
+    public float _wallDetectionDistance = 2f;
 
     [Header("Advanced Creature Data")]
     public List<CreatureData> _creaturePrey;

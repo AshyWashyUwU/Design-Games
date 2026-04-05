@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 8626599519228670635}
   - component: {fileID: 4996746361217734691}
   - component: {fileID: 4382411079251178995}
-  - component: {fileID: 6039133375682207572}
-  - component: {fileID: 5748070698983171326}
+  - component: {fileID: 3812849457719268746}
   m_Layer: 7
   m_Name: prefab_creature
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7028944691944712659}
+  - {fileID: 3955048393131049495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8626599519228670635
@@ -111,7 +110,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,9 +118,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &4382411079251178995
 CapsuleCollider2D:
@@ -153,14 +152,14 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &6039133375682207572
+--- !u!114 &3812849457719268746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,23 +168,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2445617104520478540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5beef70e4bfff4a8b87ca88c65246c, type: 3}
+  m_Script: {fileID: 11500000, guid: c7b51af40720521409bd3eedc0c65574, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CreatureMovementHandler
---- !u!114 &5748070698983171326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2445617104520478540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fde57ea0040df4f96aabbfe15269b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CreatureDataHandler
-  _creature: {fileID: 11400000, guid: d3dd8c53d96de934f8d69be5fe6acc9e, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureAIHandler
+  _creatureData: {fileID: 11400000, guid: d3dd8c53d96de934f8d69be5fe6acc9e, type: 2}
   _creatureName: {fileID: 2190517876251545481}
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &3740567779356941598
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +206,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8859877419704402414}
+  m_Father: {fileID: 3955048393131049495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -367,3 +357,48 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3421746521967504329}
   m_maskType: 0
+--- !u!1 &5540091493518456263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3955048393131049495}
+  - component: {fileID: 6078095290387197793}
+  m_Layer: 7
+  m_Name: Billboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3955048393131049495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540091493518456263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7028944691944712659}
+  m_Father: {fileID: 8859877419704402414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6078095290387197793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540091493518456263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3edf6f8ef822c614bb4249049e64bf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NametagHandler
