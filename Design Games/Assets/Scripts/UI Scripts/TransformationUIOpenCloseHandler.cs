@@ -9,6 +9,8 @@ public class TransformationUIOpenCloseHandler : MonoBehaviour
     [SerializeField] private Transform _openCloseButtonPosOpen;
     [SerializeField] private Transform _openCloseButtonPosClosed;
 
+    [SerializeField] private GameObject _timer;
+
     private TextMeshProUGUI _openCloseButtonText;
 
     private void Awake()
@@ -19,6 +21,8 @@ public class TransformationUIOpenCloseHandler : MonoBehaviour
     public void ToggleUIOpenClose()
     {
         _openableCreatureUI.SetActive(!_openableCreatureUI.activeSelf);
+
+        _timer.SetActive(!_timer.activeSelf);
 
         if (_openableCreatureUI.activeSelf)
         {

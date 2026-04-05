@@ -30,6 +30,11 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 
     private IEnumerator FadeLoadingScreen(float _targetAlpha, float _duration)
     {
+        if (TransformationDeviceHandler._instance._currentTransformedCreature != null)
+        {
+            TransformationDeviceHandler._instance.Detransform();
+        }
+
         float startAlpha = _loadingScreen.alpha;
         float _time = 0f;
 
@@ -46,11 +51,6 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 
         if (_targetAlpha != 0)
         {
-            if (TransformationDeviceHandler._instance._currentTransformedCreature != null)
-            {
-                TransformationDeviceHandler._instance.Detransform();
-            }
-
             PlayerMovementHandler._instance.GetPlayerTransform().position = _playerTeleportPoint.transform.position;
 
             PlayerMovementHandler._instance.TogglePlayerMovementType();
