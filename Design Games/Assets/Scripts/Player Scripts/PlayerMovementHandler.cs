@@ -30,6 +30,8 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private int _lastHorizontalFacing = 1; // 1 = right, -1 = left
 
+    private float _maxThreatMultiplier = 1f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -132,15 +134,20 @@ public class PlayerMovementHandler : MonoBehaviour
             _maxSpeed = TransformationDeviceHandler._instance._currentTransformedCreature._creatureSwimMaxSpeed;
         }
 
+        _maxSpeed *= _maxThreatMultiplier;
+
         if (_input != Vector2.zero)
         {
-            _playerRigidbody.AddForce(_input.normalized * _swimMoveForce);
+            _playerRigidbody.AddForce(_input.normalized * _swimForce);
         }
 
         if (_playerRigidbody.linearVelocity.magnitude > _maxSpeed)
         {
-            _playerRigidbody.linearVelocity = _playerRigidbody.linearVelocity.normalized * _maxSpeed;
+            _playerRigidbody.linearVelocity =
+                _playerRigidbody.linearVelocity.normalized * _maxSpeed;
         }
+
+        _maxThreatMultiplier = 1f;
     }
 
     private void ApplyTilt()
@@ -226,6 +233,11 @@ public class PlayerMovementHandler : MonoBehaviour
         }
 
         transform.localScale = _scale;
+    }
+
+    public void RegisterThreat(float multiplier)
+    {
+        _maxThreatMultiplier = Mathf.Max(_maxThreatMultiplier, multiplier);
     }
 
     public Transform GetPlayerTransform()

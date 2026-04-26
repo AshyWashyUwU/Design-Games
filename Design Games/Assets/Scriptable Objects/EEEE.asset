@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   _creatureSwimMaxSpeed: 3
   _creatureSwimForce: 3
-  _creatureGravityScale: 0.025
+  _creatureGravityScale: 0
   _creatureMaxTiltAngle: 15
   _creatureTiltSpeed: 5
   _creatureDetectionRange: 5
   _creatureFleeRange: 10
+  _creatureFleeSpeed: 3
   _creatureDataMaximum: 16
   _creatureType: 1
   _creatureDescription: This is a test creature 3.
   _creatureSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  _creatureSize: 1.5
   _wanderMinTime: 1
   _wanderMaxTime: 3
   _wanderFlipChance: 0.1
@@ -32,3 +34,4 @@ MonoBehaviour:
   _creaturePrey:
   - {fileID: 11400000, guid: 62cd16820d5ee184ebf24fe3bd4cf664, type: 2}
   _creatureLayers: 0400000002000000
+  _fearsPlayerBaseForm: 0

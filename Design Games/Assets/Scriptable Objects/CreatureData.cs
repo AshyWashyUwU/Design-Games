@@ -13,12 +13,14 @@ public class CreatureData : ScriptableObject
 
     public float _creatureDetectionRange = 10f;
     public float _creatureFleeRange = 5f;
+    public float _creatureFleeSpeed = 3f;
 
     [Header("Basic Creature Data")]
     public float _creatureDataMaximum;
     public CreatureType _creatureType;
     public string _creatureDescription;
     public Sprite _creatureSprite;
+    public float _creatureSize = 1f;
 
     [Header("AI Behaviour Settings")]
     public float _wanderMinTime = 1f;
@@ -33,6 +35,8 @@ public class CreatureData : ScriptableObject
     [Header("Advanced Creature Data")]
     public List<CreatureData> _creaturePrey;
     public List<int> _creatureLayers;
+
+    public bool _fearsPlayerBaseForm;
 }
 
 public enum CreatureType

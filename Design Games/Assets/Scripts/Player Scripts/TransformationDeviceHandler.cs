@@ -62,8 +62,7 @@ public class TransformationDeviceHandler : MonoBehaviour
 
         if (newCreature == _currentTransformedCreature)
         {
-            if (!_isOnCooldown && _isTransforming)
-                Detransform(false);
+            if (!_isOnCooldown && _isTransforming) Detransform(false);
             return;
         }
 
@@ -84,6 +83,7 @@ public class TransformationDeviceHandler : MonoBehaviour
         _currentTransformedCreature = newCreature;
         _playerText.text = newCreature.name;
         _transformedCreatureUIText.text = newCreature.name;
+        transform.localScale = new Vector3(newCreature._creatureSize, newCreature._creatureSize, newCreature._creatureSize);
 
         float timeLeft = _transformTime;
         _currentTransformTimeLeft = timeLeft;
@@ -128,6 +128,7 @@ public class TransformationDeviceHandler : MonoBehaviour
         _playerText.text = "Player";
         _transformedCreatureUIText.text = "(No creature selected)";
         _currentTransformedCreature = null;
+        transform.localScale = new Vector3(1, 1, 1);
 
         float cooldownLeft = cooldownDuration;
         _isBusy = false;
@@ -275,7 +276,7 @@ public class TransformationDeviceHandler : MonoBehaviour
     {
         if (_transformFlashPrefab == null) return;
 
-        GameObject flash = Instantiate(_transformFlashPrefab, transform.position, Quaternion.identity, transform);
+        GameObject flash = Instantiate(_transformFlashPrefab, transform.position, Quaternion.identity);
         TransformFlashHandler flashScript = flash.GetComponent<TransformFlashHandler>();
 
         if (flashScript != null) flashScript.SetTimeoutColor(isTimeout);

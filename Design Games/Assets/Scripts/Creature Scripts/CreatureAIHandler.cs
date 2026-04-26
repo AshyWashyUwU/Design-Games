@@ -5,6 +5,13 @@ using TMPro;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CreatureAIHandler : MonoBehaviour, ICreature
 {
+    private enum BehaviourState
+    {
+        Wander,
+        Chase,
+        Flee
+    }
+
     [Header("Creature Data")]
     [SerializeField] private CreatureData _creatureData;
 
@@ -14,12 +21,17 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
 
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
+    private Transform _player;
 
     private Vector2 _moveInput;
     private int _lastHorizontalFacing = 1;
     private float _wanderTimer;
 
-    // Steering weights
+    private float _lastCollisionTime = -1f;
+    [SerializeField] private float _collisionCooldown = 0.1f;
+
+    private BehaviourState _currentState = BehaviourState.Wander;
+
     private const float WANDER_WEIGHT = 0.5f;
     private const float THREAT_WEIGHT = 2.0f;
     private const float AVOID_WEIGHT = 3.0f;
@@ -29,10 +41,13 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
 
+        _player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
         _rigidbody.gravityScale = _creatureData._creatureGravityScale;
 
-        if (_creatureData != null)
-            _creatureName.text = _creatureData.name;
+        if (_creatureData != null) _creatureName.text = _creatureData.name;
+
+        transform.localScale = Vector3.one * _creatureData._creatureSize;
     }
 
     public CreatureData GetCreatureData() => _creatureData;
@@ -51,8 +66,6 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         ApplyMovement();
         ApplyTilt();
     }
-
-    #region STEERING BEHAVIOURS
 
     private Vector2 WanderBehaviour()
     {
@@ -87,8 +100,6 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         foreach (var creature in allCreatures)
         {
             if (creature == this) continue;
-
-            // Ignore scanning colliders completely
             if (creature.CompareTag("Scanner")) continue;
 
             float dist = Vector2.Distance(transform.position, creature.transform.position);
@@ -107,11 +118,63 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         }
 
         if (closestPredator != null && closestPredatorDist <= _creatureData._creatureFleeRange)
+        {
+            _currentState = BehaviourState.Flee;
             return (transform.position - closestPredator.position).normalized;
+        }
 
         if (closestPrey != null && closestPreyDist <= _creatureData._creatureDetectionRange)
+        {
+            _currentState = BehaviourState.Chase;
             return (closestPrey.position - transform.position).normalized;
+        }
 
+        if (_player != null)
+        {
+            float playerDist = Vector2.Distance(transform.position, _player.position);
+            var transformHandler = TransformationDeviceHandler._instance;
+
+            if (transformHandler != null && transformHandler._currentTransformedCreature != null)
+            {
+                var playerCreature = transformHandler._currentTransformedCreature;
+
+                if (playerCreature._creaturePrey.Contains(_creatureData))
+                {
+                    _currentState = BehaviourState.Flee;
+
+                    PlayerMovementHandler._instance.RegisterThreat(
+                        _creatureData._creatureFleeSpeed / _creatureData._creatureSwimMaxSpeed
+                    );
+
+                    return (transform.position - _player.position).normalized;
+                }
+
+                if (_creatureData._creaturePrey.Contains(playerCreature) &&
+                    playerDist <= _creatureData._creatureDetectionRange)
+                {
+                    _currentState = BehaviourState.Chase;
+
+                    PlayerMovementHandler._instance.RegisterThreat(
+                        _creatureData._creatureFleeSpeed / _creatureData._creatureSwimMaxSpeed
+                    );
+
+                    return (_player.position - transform.position).normalized;
+                }
+            }
+            else
+            {
+                if (playerDist <= _creatureData._creatureFleeRange)
+                {
+                    _currentState = BehaviourState.Flee;
+
+                    PlayerMovementHandler._instance.RegisterThreat(_creatureData._creatureFleeSpeed / _creatureData._creatureSwimMaxSpeed);
+
+                    return (transform.position - _player.position).normalized;
+                }
+            }
+        }
+
+        _currentState = BehaviourState.Wander;
         return Vector2.zero;
     }
 
@@ -142,31 +205,39 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
 
         if (hitCount > 0 && hits[0].collider != null)
         {
-            // Ignore scanning colliders
-            if (hits[0].collider.CompareTag("Scanner")) return Vector2.zero;
+            if (hits[0].collider.isTrigger || hits[0].collider.CompareTag("Scanner"))
+                return Vector2.zero;
 
-            float strength = 1f - (hits[0].distance / distance);
-            return -dir * strength;
+            float proximityFactor = 1f - (hits[0].distance / distance);
+
+            float scaledCooldown = Mathf.Lerp(0f, _collisionCooldown * 2f, proximityFactor);
+            if (Time.time - _lastCollisionTime < scaledCooldown)
+                return Vector2.zero;
+
+            _lastCollisionTime = Time.time;
+
+            return -dir * proximityFactor;
         }
 
         return Vector2.zero;
     }
 
-    #endregion
-
-    #region MOVEMENT
-
     private void ApplyMovement()
     {
         if (_moveInput == Vector2.zero) return;
 
-        Vector2 targetVelocity = _moveInput * _creatureData._creatureSwimMaxSpeed;
+        float speed = _creatureData._creatureSwimMaxSpeed;
+
+        if (_currentState == BehaviourState.Flee)
+            speed = _creatureData._creatureFleeSpeed;
+
+        Vector2 targetVelocity = _moveInput * speed;
         Vector2 velocityDelta = targetVelocity - _rigidbody.linearVelocity;
 
         _rigidbody.AddForce(velocityDelta * 0.5f);
 
-        if (_rigidbody.linearVelocity.magnitude > _creatureData._creatureSwimMaxSpeed)
-            _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _creatureData._creatureSwimMaxSpeed;
+        if (_rigidbody.linearVelocity.magnitude > speed)
+            _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * speed;
     }
 
     private void UpdateFacing()
@@ -174,10 +245,6 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         if (_moveInput.x > 0.1f) _lastHorizontalFacing = 1;
         else if (_moveInput.x < -0.1f) _lastHorizontalFacing = -1;
     }
-
-    #endregion
-
-    #region VISUALS
 
     private void ApplyTilt()
     {
@@ -194,6 +261,4 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _creatureData._creatureTiltSpeed * Time.fixedDeltaTime);
         transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
     }
-
-    #endregion
 }
