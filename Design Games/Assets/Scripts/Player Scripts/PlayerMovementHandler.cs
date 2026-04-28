@@ -32,6 +32,9 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private float _maxThreatMultiplier = 1f;
 
+    private bool _isKnockedBack;
+    private float _knockbackTimer;
+
     private void Awake()
     {
         if (Instance == null)
@@ -120,6 +123,18 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void HandleSwimmingMovement(Vector2 _input)
     {
+        if (_isKnockedBack)
+        {
+            _knockbackTimer -= Time.fixedDeltaTime;
+
+            if (_knockbackTimer <= 0f)
+            {
+                _isKnockedBack = false;
+            }
+
+            return;
+        }
+
         float _swimForce;
         float _maxSpeed;
 
@@ -148,6 +163,15 @@ public class PlayerMovementHandler : MonoBehaviour
         }
 
         _maxThreatMultiplier = 1f;
+    }
+
+    public void ApplyKnockback(Vector2 force, float duration)
+    {
+        _isKnockedBack = true;
+        _knockbackTimer = duration;
+
+        _playerRigidbody.linearVelocity = Vector2.zero;
+        _playerRigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
     private void ApplyTilt()

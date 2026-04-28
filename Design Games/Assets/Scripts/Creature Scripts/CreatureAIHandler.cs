@@ -15,9 +15,12 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
     [Header("Creature Data")]
     [SerializeField] private CreatureData _creatureData;
 
-    [Header("References")]
+    [Header("Creature References")]
     [SerializeField] private TextMeshPro _creatureName;
     [SerializeField] private LayerMask _wallLayer;
+
+    private float _currentHealth;
+    private float _lastAttackTime;
 
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
@@ -26,6 +29,7 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
     private Vector2 _moveInput;
     private int _lastHorizontalFacing = 1;
     private float _wanderTimer;
+    private float _lastLungeTime;
 
     private float _lastCollisionTime = -1f;
     [SerializeField] private float _collisionCooldown = 0.1f;
@@ -36,21 +40,20 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
     private const float THREAT_WEIGHT = 2.0f;
     private const float AVOID_WEIGHT = 3.0f;
 
+    public CreatureData GetCreatureData() => _creatureData;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
-
         _player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        _rigidbody.gravityScale = _creatureData._creatureGravityScale;
 
         if (_creatureData != null) _creatureName.text = _creatureData.name;
 
+        _rigidbody.gravityScale = _creatureData._creatureGravityScale;
+        _currentHealth = _creatureData._creatureMaxHealth;
         transform.localScale = Vector3.one * _creatureData._creatureSize;
     }
-
-    public CreatureData GetCreatureData() => _creatureData;
 
     private void FixedUpdate()
     {
@@ -73,8 +76,7 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
 
         if (_wanderTimer <= 0f)
         {
-            if (Random.value < _creatureData._wanderFlipChance)
-                _lastHorizontalFacing *= -1;
+            if (Random.value < _creatureData._wanderFlipChance) _lastHorizontalFacing *= -1;
 
             float horizontal = Random.Range(0.5f, 1f) * _lastHorizontalFacing;
             float vertical = Random.Range(-_creatureData._wanderVerticalRange, _creatureData._wanderVerticalRange);
@@ -126,12 +128,19 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         if (closestPrey != null && closestPreyDist <= _creatureData._creatureDetectionRange)
         {
             _currentState = BehaviourState.Chase;
-            return (closestPrey.position - transform.position).normalized;
+
+            Vector2 dir = (closestPrey.position - transform.position).normalized;
+
+            TryLunge(dir);
+            TryAttack();
+
+            return dir;
         }
 
         if (_player != null)
         {
             float playerDist = Vector2.Distance(transform.position, _player.position);
+
             var transformHandler = TransformationDeviceHandler._instance;
 
             if (transformHandler != null && transformHandler._currentTransformedCreature != null)
@@ -148,29 +157,18 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
 
                     return (transform.position - _player.position).normalized;
                 }
-
-                if (_creatureData._creaturePrey.Contains(playerCreature) &&
-                    playerDist <= _creatureData._creatureDetectionRange)
-                {
-                    _currentState = BehaviourState.Chase;
-
-                    PlayerMovementHandler._instance.RegisterThreat(
-                        _creatureData._creatureFleeSpeed / _creatureData._creatureSwimMaxSpeed
-                    );
-
-                    return (_player.position - transform.position).normalized;
-                }
             }
-            else
+
+            if (playerDist <= _creatureData._creatureDetectionRange && CanAttackPlayer())
             {
-                if (playerDist <= _creatureData._creatureFleeRange)
-                {
-                    _currentState = BehaviourState.Flee;
+                _currentState = BehaviourState.Chase;
 
-                    PlayerMovementHandler._instance.RegisterThreat(_creatureData._creatureFleeSpeed / _creatureData._creatureSwimMaxSpeed);
+                Vector2 dir = (_player.position - transform.position).normalized;
 
-                    return (transform.position - _player.position).normalized;
-                }
+                TryLunge(dir);
+                TryAttack();
+
+                return dir;
             }
         }
 
@@ -180,7 +178,7 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
 
     private Vector2 AvoidWalls()
     {
-        float distance = _creatureData._wallDetectionDistance;
+        float distance = _creatureData._wallDetectionDistance * _creatureData._creatureSize;
 
         Vector2 forward = new Vector2(_lastHorizontalFacing, 0f);
         Vector2 upForward = (forward + Vector2.up * 0.5f).normalized;
@@ -260,5 +258,88 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         float currentAngle = transform.eulerAngles.z;
         float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _creatureData._creatureTiltSpeed * Time.fixedDeltaTime);
         transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
+    }
+
+    private void TryAttack()
+    {
+        Debug.Log("ATTEMPTING ATTACK");
+
+        if (Time.time - _lastAttackTime < _creatureData._creatureAttackCooldown) return;
+
+        _lastAttackTime = Time.time;
+
+        Vector2 center = (Vector2)transform.position + new Vector2(_lastHorizontalFacing, 0f) * _creatureData._biteOffset;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(center, _creatureData._biteRadius);
+
+        foreach (var hit in hits)
+        {
+            if (hit.transform == transform) continue;
+            if (hit.CompareTag("Scanner")) continue;
+
+            var creature = hit.GetComponent<CreatureAIHandler>();
+            if (creature != null && _creatureData._creaturePrey.Contains(creature.GetCreatureData()))
+            {
+                creature.TakeDamage(_creatureData._creatureAttackDamage);
+                continue;
+            }
+
+            if (hit.CompareTag("Player") && CanAttackPlayer())
+            {
+                HandlePlayerHit(hit.transform);
+            }
+        }
+    }
+
+    private void TryLunge(Vector2 direction)
+    {
+        if (!_creatureData._canLunge) return;
+        if (Time.time - _lastLungeTime < _creatureData._lungeCooldown) return;
+
+        _lastLungeTime = Time.time;
+
+        _rigidbody.AddForce(direction * _creatureData._lungeForce, ForceMode2D.Impulse);
+    }
+
+    private void HandlePlayerHit(Transform player)
+    {
+        var health = player.GetComponent<PlayerHealthHandler>();
+        if (health == null) return;
+
+        Vector2 dir = (player.position - transform.position).normalized;
+
+        health.TakeDamage(_creatureData._creatureAttackDamage, dir);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHealth -= amount;
+
+        if (_currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    private bool CanAttackPlayer()
+    {
+        var transformHandler = TransformationDeviceHandler._instance;
+
+        if (transformHandler != null && transformHandler._currentTransformedCreature != null)
+        {
+            var playerCreature = transformHandler._currentTransformedCreature;
+            return _creatureData._creaturePrey.Contains(playerCreature);
+        }
+        else
+        {
+            return _creatureData._attacksPlayerBaseForm;
+        }
+    }
+
+    private void Die()
+    {
+        // TODO: add particles, score, etc.
+
+        Destroy(gameObject);
     }
 }

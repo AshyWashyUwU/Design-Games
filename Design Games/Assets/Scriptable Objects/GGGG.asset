@@ -19,12 +19,21 @@ MonoBehaviour:
   _creatureTiltSpeed: 5
   _creatureDetectionRange: 5
   _creatureFleeRange: 5
-  _creatureFleeSpeed: 100
+  _creatureFleeSpeed: 1
   _creatureDataMaximum: 50
   _creatureType: 2
   _creatureDescription: This is a test creature 2.
   _creatureSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   _creatureSize: 1
+  _creatureMaxHealth: 10
+  _creatureAttackDamage: 5
+  _creatureAttackRange: 2
+  _creatureAttackCooldown: 0.5
+  _biteRadius: 0.5
+  _biteOffset: 0.5
+  _canLunge: 0
+  _lungeForce: 10
+  _lungeCooldown: 2
   _wanderMinTime: 1
   _wanderMaxTime: 3
   _wanderFlipChance: 0.1
@@ -34,3 +43,4 @@ MonoBehaviour:
   _creaturePrey: []
   _creatureLayers: 01000000
   _fearsPlayerBaseForm: 1
+  _attacksPlayerBaseForm: 0

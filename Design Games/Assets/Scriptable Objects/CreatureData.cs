@@ -22,6 +22,21 @@ public class CreatureData : ScriptableObject
     public Sprite _creatureSprite;
     public float _creatureSize = 1f;
 
+    [Header("Creature Combat")]
+    public float _creatureMaxHealth = 10f;
+    public float _creatureAttackDamage = 5f;
+    public float _creatureAttackRange = 2f;
+    public float _creatureAttackCooldown = 0.5f;
+
+    [Header("Bite Settings")]
+    public float _biteRadius = 0.5f;
+    public float _biteOffset = 0.5f;
+
+    [Header("Lunge")]
+    public bool _canLunge;
+    public float _lungeForce = 10f;
+    public float _lungeCooldown = 2f;
+
     [Header("AI Behaviour Settings")]
     public float _wanderMinTime = 1f;
     public float _wanderMaxTime = 3f;
@@ -37,6 +52,7 @@ public class CreatureData : ScriptableObject
     public List<int> _creatureLayers;
 
     public bool _fearsPlayerBaseForm;
+    public bool _attacksPlayerBaseForm;
 }
 
 public enum CreatureType

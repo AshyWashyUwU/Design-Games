@@ -156,6 +156,11 @@ public class TransformationDeviceScanningHandler : MonoBehaviour
             computer.UploadCreatureData(creature, newAmount);
         }
 
+        ClearStoredCreatures();
+    }
+
+    public void ClearStoredCreatures()
+    {
         _storedCreatures.Clear();
         _totalDataAmount = 0f;
 

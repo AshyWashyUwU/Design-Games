@@ -4,6 +4,9 @@ using Unity.Cinemachine;
 
 public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
 {
+    private static TogglePlayerMovementHandler Instance;
+    public static TogglePlayerMovementHandler _instance => Instance;
+
     [SerializeField] private Transform _playerTeleportPoint;
 
     [SerializeField] private CanvasGroup _loadingScreen;
@@ -16,6 +19,13 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
     [SerializeField] private float _newLensSize;
 
     private bool _alreadyTeleported = false;
+
+    [SerializeField] private bool _playerDeathTeleporter;
+
+    private void Awake()
+    {
+        if (Instance == null && _playerDeathTeleporter) Instance = this;
+    }
 
     public void Interact(GameObject _interactor)
     {
@@ -69,6 +79,7 @@ public class TogglePlayerMovementHandler : MonoBehaviour, IInteractable
         {
             _alreadyTeleported = false;
             PlayerMovementHandler._instance.ToggleImmobilization();
+            PlayerHealthHandler._instance.FullyHeal();
         }
     }
 
