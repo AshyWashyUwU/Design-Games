@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UpgradeDataHolder : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class UpgradeDataHolder : MonoBehaviour
 
     public float _computerUploadTimeMultiplier { get; private set; } = 1f;
 
+    [SerializeField] private List<UpgradeData> _upgradeData = new List<UpgradeData>();
+    [SerializeField] private List<int> _upgradeDataTiers = new List<int>();
+    [SerializeField] private List<UpgradeButton> _upgradeButtons = new List<UpgradeButton>();
+
+    [SerializeField] private UpgradeData _test;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,12 +31,105 @@ public class UpgradeDataHolder : MonoBehaviour
         }
     }
 
+    private void ActuallyUpgrade(string _upgradeKey, int _upgradeTier, float newData)
+    {
+        if (_upgradeKey == "PlayerSwimSpeed")
+        {
+            UpdatePlayerSwimSpeed(newData);
+        }
+        else if (_upgradeKey == "PlayerDataStorage")
+        {
+            UpdatePlayerDataMaximum(newData);
+        }
+        else if (_upgradeKey == "PlayerCollectionSpeed")
+        {
+            UpdatePlayerCollectionAmount(newData);
+        }
+        else if (_upgradeKey == "PlayerScanRange")
+        {
+            UpdatePlayerDataScanRange(newData);
+        }
+        else if (_upgradeKey == "TransformationCooldown")
+        {
+            _playerTransformationLimit = newData;
+        }
+        else if (_upgradeKey == "DetransformTimer")
+        {
+            _playerTransformationCooldown = newData;
+        }
+        else if (_upgradeKey == "ComputerDataUploadTime")
+        {
+            _computerUploadTimeMultiplier = newData;
+        }
+    }
+
     private void Start()
     {
-        UpdatePlayerSwimSpeed(_playerSwimSpeed);
-        UpdatePlayerDataMaximum(_playerDataMaximum);
-        UpdatePlayerDataScanRange(_playerScanRange);
-        UpdatePlayerCollectionAmount(_playerDataCollectionAmount);
+        for (int i = 0; i < _upgradeData.Count; i++)
+        {
+            _upgradeDataTiers.Add(0);
+        }
+    }
+
+    public void RefreshUpgrades()
+    {
+        for (int i = 0; i < _upgradeData.Count; i++)
+        {
+            Upgrade(_upgradeData[i], true);
+        }
+    }
+
+    public void Upgrade(UpgradeData _chosenUpgrade, bool _refreshing)
+    {
+        int _upgradeIndex = 0;
+
+        for (int i = 0; i < _upgradeData.Count; i++)
+        {
+            if (_upgradeData[i] == _chosenUpgrade)
+            {
+                _upgradeIndex = i;
+            }
+        }
+
+        int _upgradeTier = _upgradeDataTiers[_upgradeIndex];
+
+        if (_upgradeData[_upgradeIndex]._upgradeTier.Count + 1 < _upgradeTier) return;
+
+        float _upgradeTierCost = _upgradeData[_upgradeIndex]._upgradeTier[_upgradeTier]._upgradeResearchCost;
+
+        if ((_upgradeTierCost > ComputerDataHolder._instance._totalUploadedData && !_refreshing) || _upgradeTierCost == 1)
+        {
+            return;
+        }
+        else
+        {
+            string _upgradeKey = _upgradeData[_upgradeIndex]._upgradeKey;
+
+            if (_upgradeTierCost != 0 && !_refreshing) _upgradeDataTiers[_upgradeIndex]++;
+
+            int _newTier = _upgradeDataTiers[_upgradeIndex];
+
+            float newData = _upgradeData[_upgradeIndex]._upgradeTier[_newTier]._upgradeFloatAmount;
+
+            ActuallyUpgrade(_upgradeKey, _newTier, newData);
+
+            UpgradeButton _upgradeButton = _upgradeButtons[_upgradeIndex];
+
+            if (_upgradeTierCost == 0 && !_refreshing) _upgradeDataTiers[_upgradeIndex]++;
+
+            _newTier = _upgradeDataTiers[_upgradeIndex];
+
+            float _newUpgradeTierCost = 0;
+
+            if (_upgradeData[_upgradeIndex]._upgradeTier.Count >= _newTier)
+            {
+                _newUpgradeTierCost = _upgradeData[_upgradeIndex]._upgradeTier[_newTier]._upgradeResearchCost;
+            }
+
+            _upgradeButton.UpdateButton(_newTier, _newUpgradeTierCost);
+        }
+
+        if (!_refreshing) RefreshUpgrades();
     }
 
     public void UpdatePlayerSwimSpeed(float _newSwimSpeed)

@@ -16,10 +16,6 @@ public class TransformationDeviceHandler : MonoBehaviour
     [SerializeField] private Image[] _radialFillImages;
     [SerializeField] private Image _vignetteImage;
 
-    [Header("Timing")]
-    [SerializeField] private int _transformTime = 30;
-    [SerializeField] private int _transformCooldownTime = 30;
-
     [Header("Cooldown Tuning")]
     [SerializeField] private float _minCooldownPercent = 0.3f;
     [SerializeField] private float _cooldownCurvePower = 1.5f;
@@ -83,6 +79,8 @@ public class TransformationDeviceHandler : MonoBehaviour
         _playerText.text = newCreature.name;
         _transformedCreatureUIText.text = newCreature.name;
         transform.localScale = new Vector3(newCreature._creatureSize, newCreature._creatureSize, newCreature._creatureSize);
+
+        float _transformTime = UpgradeDataHolder._instance._playerTransformationLimit;
 
         float timeLeft = _transformTime;
         _currentTransformTimeLeft = timeLeft;
@@ -158,13 +156,13 @@ public class TransformationDeviceHandler : MonoBehaviour
 
     private float CalculateCooldown()
     {
-        float usagePercent = 1f - (_currentTransformTimeLeft / _transformTime);
+        float usagePercent = 1f - (_currentTransformTimeLeft / UpgradeDataHolder._instance._playerTransformationLimit);
         usagePercent = Mathf.Clamp01(usagePercent);
         usagePercent = Mathf.Pow(usagePercent, _cooldownCurvePower);
 
-        float minCooldown = _transformCooldownTime * _minCooldownPercent;
+        float minCooldown = UpgradeDataHolder._instance._playerTransformationCooldown * _minCooldownPercent;
 
-        return Mathf.Lerp(minCooldown, _transformCooldownTime, usagePercent);
+        return Mathf.Lerp(minCooldown, UpgradeDataHolder._instance._playerTransformationCooldown, usagePercent);
     }
 
     private void UpdateTimers(float time, float maxTime, bool isCooldown)

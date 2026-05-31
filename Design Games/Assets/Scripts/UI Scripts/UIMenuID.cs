@@ -5,5 +5,6 @@ public enum UIMenuID
     Main,
     Computer,
     UploadResearch,
-    EncyclopediaEntry
+    EncyclopediaEntry,
+    UpgradesGuy
 }

@@ -38,13 +38,11 @@ public class TransformationUIDataHandler : MonoBehaviour
     {
         if (_dataMaximum != 0)
         {
-            float _percentage = (_totalDataAmount / _dataMaximum) * 100f;
-
-            _totalDataText.text = "Data: " + _percentage.ToString("F0") + "%";
+            _totalDataText.text = _totalDataAmount.ToString("F0") + " GB";
         }
         else
         {
-            _totalDataText.text = "0%";
+            _totalDataText.text = "0 GB";
         }
     }
 
@@ -156,7 +154,7 @@ public class TransformationUIDataHandler : MonoBehaviour
 
         if (_totalDataText != null)
         {
-            _totalDataText.text = "Data: 0%";
+            _totalDataText.text = "0 GB";
         }
     }
 }

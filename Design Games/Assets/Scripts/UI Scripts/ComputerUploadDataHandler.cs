@@ -80,7 +80,7 @@ public class ComputerUploadDataHandler : MonoBehaviour
             return;
         }
 
-        _uploadDuration = totalData / _uploadRate;
+        _uploadDuration = (totalData / _uploadRate) / UpgradeDataHolder._instance._computerUploadTimeMultiplier;
         _uploadDuration = Mathf.Clamp(_uploadDuration, 0.5f, 30f);
 
         _isUploading = true;
