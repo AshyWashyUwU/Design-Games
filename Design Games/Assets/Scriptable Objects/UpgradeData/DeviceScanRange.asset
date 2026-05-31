@@ -15,12 +15,12 @@ MonoBehaviour:
   _upgradeTier:
   - _upgradeFloatAmount: 7
     _upgradeResearchCost: 0
-  - _upgradeFloatAmount: 9
-    _upgradeResearchCost: 250
-  - _upgradeFloatAmount: 11
-    _upgradeResearchCost: 1000
-  - _upgradeFloatAmount: 15
-    _upgradeResearchCost: 2500
-  - _upgradeFloatAmount: 18
+  - _upgradeFloatAmount: 7
+    _upgradeResearchCost: 100
+  - _upgradeFloatAmount: 8
+    _upgradeResearchCost: 5000
+  - _upgradeFloatAmount: 10
+    _upgradeResearchCost: 7000
+  - _upgradeFloatAmount: 12
     _upgradeResearchCost: 1
   _upgradeKey: PlayerScanRange

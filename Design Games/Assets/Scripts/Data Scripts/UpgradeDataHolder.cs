@@ -31,7 +31,7 @@ public class UpgradeDataHolder : MonoBehaviour
         }
     }
 
-    private void ActuallyUpgrade(string _upgradeKey, int _upgradeTier, float newData)
+    private void ActuallyUpgrade(string _upgradeKey, int _upgradeTier, float newData, bool _refreshing)
     {
         if (_upgradeKey == "PlayerSwimSpeed")
         {
@@ -39,7 +39,7 @@ public class UpgradeDataHolder : MonoBehaviour
         }
         else if (_upgradeKey == "PlayerDataStorage")
         {
-            UpdatePlayerDataMaximum(newData);
+            UpdatePlayerDataMaximum(newData, _refreshing);
         }
         else if (_upgradeKey == "PlayerCollectionSpeed")
         {
@@ -68,6 +68,11 @@ public class UpgradeDataHolder : MonoBehaviour
         for (int i = 0; i < _upgradeData.Count; i++)
         {
             _upgradeDataTiers.Add(0);
+        }
+
+        for (int i = 0; i < _upgradeData.Count; i++)
+        {
+            Upgrade(_upgradeData[i], false);
         }
     }
 
@@ -111,7 +116,7 @@ public class UpgradeDataHolder : MonoBehaviour
 
             float newData = _upgradeData[_upgradeIndex]._upgradeTier[_newTier]._upgradeFloatAmount;
 
-            ActuallyUpgrade(_upgradeKey, _newTier, newData);
+            ActuallyUpgrade(_upgradeKey, _newTier, newData, _refreshing);
 
             UpgradeButton _upgradeButton = _upgradeButtons[_upgradeIndex];
 
@@ -139,8 +144,10 @@ public class UpgradeDataHolder : MonoBehaviour
         PlayerMovementHandler._instance.UpdateSwimSpeed(_newSwimSpeed);
     }
 
-    public void UpdatePlayerDataMaximum(float _newDataMaximum)
+    public void UpdatePlayerDataMaximum(float _newDataMaximum, bool _refreshing)
     {
+        if (_refreshing) return;
+
         _playerDataMaximum = _newDataMaximum;
 
         TransformationDeviceScanningHandler._instance.UpdateDataMaximum(_newDataMaximum);

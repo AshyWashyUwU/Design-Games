@@ -15,12 +15,12 @@ MonoBehaviour:
   _upgradeTier:
   - _upgradeFloatAmount: 45
     _upgradeResearchCost: 0
+  - _upgradeFloatAmount: 45
+    _upgradeResearchCost: 250
   - _upgradeFloatAmount: 35
-    _upgradeResearchCost: 400
+    _upgradeResearchCost: 1500
   - _upgradeFloatAmount: 25
-    _upgradeResearchCost: 800
+    _upgradeResearchCost: 2500
   - _upgradeFloatAmount: 10
-    _upgradeResearchCost: 2000
-  - _upgradeFloatAmount: 5
     _upgradeResearchCost: 1
   _upgradeKey: DetransformTimer

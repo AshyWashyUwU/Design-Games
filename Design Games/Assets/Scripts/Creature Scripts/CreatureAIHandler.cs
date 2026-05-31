@@ -181,8 +181,8 @@ public class CreatureAIHandler : MonoBehaviour, ICreature
         float distance = _creatureData._wallDetectionDistance * _creatureData._creatureSize;
 
         Vector2 forward = new Vector2(_lastHorizontalFacing, 0f);
-        Vector2 upForward = (forward + Vector2.up * 0.5f).normalized;
-        Vector2 downForward = (forward + Vector2.down * 0.5f).normalized;
+        Vector2 upForward = (forward + Vector2.up * 2f).normalized;
+        Vector2 downForward = (forward + Vector2.down * 2f).normalized;
 
         Vector2 avoidance = Vector2.zero;
 

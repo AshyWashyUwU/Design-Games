@@ -15272,8 +15272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d20ab828d8b1e4f92c6dae704699ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSlotHolder
-  _creatureSlots:
-  - {fileID: 11400000, guid: d3dd8c53d96de934f8d69be5fe6acc9e, type: 2}
+  _creatureSlots: []
 --- !u!1 &2058848397
 GameObject:
   m_ObjectHideFlags: 0

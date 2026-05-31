@@ -15,12 +15,12 @@ MonoBehaviour:
   _upgradeTier:
   - _upgradeFloatAmount: 0.01
     _upgradeResearchCost: 0
+  - _upgradeFloatAmount: 0.01
+    _upgradeResearchCost: 150
+  - _upgradeFloatAmount: 0.05
+    _upgradeResearchCost: 2000
   - _upgradeFloatAmount: 0.1
-    _upgradeResearchCost: 100
-  - _upgradeFloatAmount: 0.25
-    _upgradeResearchCost: 450
-  - _upgradeFloatAmount: 0.5
-    _upgradeResearchCost: 1750
-  - _upgradeFloatAmount: 0.75
+    _upgradeResearchCost: 3000
+  - _upgradeFloatAmount: 0.2
     _upgradeResearchCost: 1
   _upgradeKey: PlayerCollectionSpeed
