@@ -15,6 +15,13 @@ public class UpgradeButton : MonoBehaviour
 
     [SerializeField] private UpgradeData _upgrade;
 
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     public void UpdateButton(int _newUpgradeTier, float _newData)
     {
         _upgradeTier.text = "Tier " + _newUpgradeTier.ToString();
@@ -42,6 +49,7 @@ public class UpgradeButton : MonoBehaviour
 
     public void PurchaseUpgrade()
     {
+        _animator.SetTrigger("Press");
         UpgradeDataHolder._instance.Upgrade(_upgrade, false);
     }
 }

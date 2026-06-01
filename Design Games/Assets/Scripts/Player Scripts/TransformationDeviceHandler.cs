@@ -122,7 +122,7 @@ public class TransformationDeviceHandler : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
 
-        _playerText.text = "Player";
+        _playerText.text = "Diver";
         _transformedCreatureUIText.text = "(No creature selected)";
         _currentTransformedCreature = null;
         transform.localScale = new Vector3(1, 1, 1);

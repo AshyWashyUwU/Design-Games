@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13907636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+  m_PrefabInstance: {fileID: 1640761917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &18759967
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +199,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 135
     m_Bottom: 20
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 145, y: 145}
@@ -391,7 +396,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -10, z: 0}
-  m_LocalScale: {x: 35, y: 1, z: 1}
+  m_LocalScale: {x: 59, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 842295324}
@@ -1827,6 +1832,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
+      objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1926,7 +1943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 5
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 624746695}
   _creatureButtonType: 0
@@ -2111,6 +2128,18 @@ PrefabInstance:
     - target: {fileID: 2089022340777653554, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
       objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2399,7 +2428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 4
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 1269313403}
   _creatureButtonType: 0
@@ -4857,6 +4886,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
+      objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -6560,6 +6601,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
+      objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -6659,7 +6712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 1
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 930378874}
   _creatureButtonType: 0
@@ -6685,6 +6738,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1024238729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+  m_PrefabInstance: {fileID: 1946403991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037770638
 GameObject:
   m_ObjectHideFlags: 0
@@ -7037,6 +7095,11 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3698091098268160413, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
   m_PrefabInstance: {fileID: 2048206966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136816783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+  m_PrefabInstance: {fileID: 1452856056}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1168482561
 GameObject:
@@ -7542,11 +7605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7571,6 +7634,14 @@ PrefabInstance:
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7602,11 +7673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 217
+      value: 347.50003
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -560
+      value: -429.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7624,6 +7695,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5f7447555a0c9bd488d0055f2665c72a, type: 3}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Detransform Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949105975467705190, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.850006
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: DetransformTimer
@@ -7635,7 +7714,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1544787939}
   m_SourcePrefab: {fileID: 100100000, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
 --- !u!224 &1221388779 stripped
 RectTransform:
@@ -7647,7 +7729,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
   m_PrefabInstance: {fileID: 1221388778}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1544787935}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ed109ecd94b8442beb52069b55115a, type: 3}
@@ -7691,8 +7773,8 @@ Transform:
   m_GameObject: {fileID: 1227815051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: -22, z: 0}
-  m_LocalScale: {x: 1, y: 25, z: 1}
+  m_LocalPosition: {x: -30, y: -29.5, z: 0}
+  m_LocalScale: {x: 1, y: 40, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 842295324}
@@ -9295,8 +9377,8 @@ Transform:
   m_GameObject: {fileID: 1380370341}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17, y: -22, z: 0}
-  m_LocalScale: {x: 1, y: 25, z: 1}
+  m_LocalPosition: {x: 30, y: -29.5, z: 0}
+  m_LocalScale: {x: 1, y: 40, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 842295324}
@@ -9566,6 +9648,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
+      objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -9665,7 +9759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 3
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 1413044917}
   _creatureButtonType: 0
@@ -9871,7 +9965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 4
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 713780837}
   _creatureButtonType: 1
@@ -10847,11 +10941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10876,6 +10970,14 @@ PrefabInstance:
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10907,11 +11009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 360
+      value: 490.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10929,6 +11031,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5f7447555a0c9bd488d0055f2665c72a, type: 3}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Device Collection Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949105975467705190, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.850006
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: DeviceCollectionSpeed
@@ -10940,7 +11050,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2106216267}
   m_SourcePrefab: {fileID: 100100000, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
 --- !u!224 &1452856057 stripped
 RectTransform:
@@ -11112,8 +11225,8 @@ Transform:
   m_GameObject: {fileID: 1481319685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -35, z: 0}
-  m_LocalScale: {x: 35, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -49, z: 0}
+  m_LocalScale: {x: 59, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 842295324}
@@ -11264,7 +11377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 3
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 1297286237}
   _creatureButtonType: 1
@@ -11737,6 +11850,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311503197700750204, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6392157
+      objectReference: {fileID: 0}
     - target: {fileID: 3341357405760849527, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -11836,7 +11961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 2
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 848286102}
   _creatureButtonType: 0
@@ -11848,6 +11973,33 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688279337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a14d074c52b9f364ca0f6dc7e03b53a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1544787935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+  m_PrefabInstance: {fileID: 1221388778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1544787939
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544787935}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a14d074c52b9f364ca0f6dc7e03b53a3, type: 2}
@@ -12454,7 +12606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 5
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 791935805}
   _creatureButtonType: 1
@@ -12621,11 +12773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12650,6 +12802,14 @@ PrefabInstance:
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12681,11 +12841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 655
+      value: 785.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12703,6 +12863,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5f7447555a0c9bd488d0055f2665c72a, type: 3}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Device Scan Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949105975467705190, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.850006
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: DeviceScanRange
@@ -12714,7 +12882,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1640761923}
   m_SourcePrefab: {fileID: 100100000, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
 --- !u!224 &1640761918 stripped
 RectTransform:
@@ -12726,12 +12897,34 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
   m_PrefabInstance: {fileID: 1640761917}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 13907636}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ed109ecd94b8442beb52069b55115a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+--- !u!95 &1640761923
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13907636}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a14d074c52b9f364ca0f6dc7e03b53a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1681773569
 GameObject:
   m_ObjectHideFlags: 0
@@ -13339,29 +13532,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 18759968}
     m_Modifications:
-    - target: {fileID: 1237992175079691554, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_text
-      value: Device Collection Storage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1237992175079691554, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1606195271615919137, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1606195271615919137, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13417,11 +13594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 65
+      value: 195.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13435,18 +13612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4325695480362167171, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1819959dbe5aad64a86f72c4d985b630, type: 3}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: DeviceCollectionStorage
       objectReference: {fileID: 0}
-    - target: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: _upgrade
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e374a0bc9a5671489780fb6d29691c3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13918,7 +14087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 1
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 902311258}
   _creatureButtonType: 1
@@ -14176,7 +14345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 0
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 1953641240}
   _creatureButtonType: 0
@@ -14577,11 +14746,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14606,6 +14775,14 @@ PrefabInstance:
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14637,11 +14814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 950
+      value: 1080.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14659,6 +14836,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5f7447555a0c9bd488d0055f2665c72a, type: 3}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Transformation Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949105975467705190, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.850006
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: TransformationCooldown
@@ -14670,7 +14859,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946403997}
   m_SourcePrefab: {fileID: 100100000, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
 --- !u!224 &1946403992 stripped
 RectTransform:
@@ -14682,12 +14874,34 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
   m_PrefabInstance: {fileID: 1946403991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1024238729}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ed109ecd94b8442beb52069b55115a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+--- !u!95 &1946403997
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024238729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a14d074c52b9f364ca0f6dc7e03b53a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1953641240 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7877830061759583184, guid: 54d369540e3e52c48b789cc7c8a1937b, type: 3}
@@ -15224,7 +15438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 2
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 348632928}
   _creatureButtonType: 1
@@ -15556,29 +15770,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 18759968}
     m_Modifications:
-    - target: {fileID: 1237992175079691554, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_text
-      value: Computer Data Upload Time
-      objectReference: {fileID: 0}
-    - target: {fileID: 1237992175079691554, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1606195271615919137, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 1606195271615919137, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.59
-      objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -15634,11 +15832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 512
+      value: 642.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -560
+      value: -429.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15652,10 +15850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4325695480362167171, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f7447555a0c9bd488d0055f2665c72a, type: 3}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Computer Upload Speed
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: ComputerDataUploadTime
@@ -15721,12 +15919,34 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
   m_PrefabInstance: {fileID: 1452856056}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1136816783}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ed109ecd94b8442beb52069b55115a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+--- !u!95 &2106216267
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136816783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a14d074c52b9f364ca0f6dc7e03b53a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2108810732
 GameObject:
   m_ObjectHideFlags: 0
@@ -16054,7 +16274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player
+  m_text: Diver
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16685,7 +16905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureHotbarButtonHandler
   _creatureSlotButton: 0
   _selectedColor: {r: 1, g: 0.73018867, b: 0.73018867, a: 1}
-  _unselectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _unselectedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   _filledColor: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
   _buttonText: {fileID: 1224124912}
   _creatureButtonType: 1
@@ -16820,11 +17040,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -16880,11 +17100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -230
+      value: -99.50006
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 3145091967027251949, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16898,10 +17118,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4758288627905938429, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: m_text
+      value: Player Swim Speed
+      objectReference: {fileID: 0}
     - target: {fileID: 6516727812648984548, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
       propertyPath: m_Name
       value: PlayerSwimSpeed
       objectReference: {fileID: 0}
+    - target: {fileID: 7042665233033728093, guid: 309b88ef237bcf64fb80a9ff711552b5, type: 3}
+      propertyPath: _upgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: d332c77e278848940b77166cef26e065, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

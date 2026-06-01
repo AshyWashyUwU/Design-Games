@@ -29,6 +29,20 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (_storedCreature == null) _buttonImage.color = _unselectedColor; return;
+
+        if (TransformationDeviceHandler._instance._currentTransformedCreature == _storedCreature && _creatureButtonType == CreatureButtonType.HotbarButton)
+        {
+            _buttonImage.color = _selectedColor;
+        }
+        else if (TransformationDeviceHandler._instance._currentTransformedCreature != _storedCreature && _creatureButtonType == CreatureButtonType.HotbarButton)
+        {
+            _buttonImage.color = _filledColor;
+        }
+    }
+
     private void OnDisable()
     {
         if (_selected) SetSelected(!_selected);

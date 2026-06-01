@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DeviceCollectionStorage
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   _upgradeTier:
-  - _upgradeFloatAmount: 100
+  - _upgradeFloatAmount: 25
     _upgradeResearchCost: 0
-  - _upgradeFloatAmount: 450
+  - _upgradeFloatAmount: 100
     _upgradeResearchCost: 250
-  - _upgradeFloatAmount: 1000
+  - _upgradeFloatAmount: 500
     _upgradeResearchCost: 2000
-  - _upgradeFloatAmount: 2000
+  - _upgradeFloatAmount: 1000
     _upgradeResearchCost: 4000
-  - _upgradeFloatAmount: 5000
+  - _upgradeFloatAmount: 2500
     _upgradeResearchCost: 1
   _upgradeKey: PlayerDataStorage
