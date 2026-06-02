@@ -28,7 +28,7 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private Rigidbody2D _playerRigidbody;
 
-    private int _lastHorizontalFacing = 1; // 1 = right, -1 = left
+    private int _lastHorizontalFacing = 1;
 
     private float _maxThreatMultiplier = 1f;
 
@@ -158,8 +158,7 @@ public class PlayerMovementHandler : MonoBehaviour
 
         if (_playerRigidbody.linearVelocity.magnitude > _maxSpeed)
         {
-            _playerRigidbody.linearVelocity =
-                _playerRigidbody.linearVelocity.normalized * _maxSpeed;
+            _playerRigidbody.linearVelocity = _playerRigidbody.linearVelocity.normalized * _maxSpeed;
         }
 
         _maxThreatMultiplier = 1f;

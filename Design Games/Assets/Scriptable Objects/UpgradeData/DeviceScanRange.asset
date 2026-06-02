@@ -16,9 +16,9 @@ MonoBehaviour:
   - _upgradeFloatAmount: 7
     _upgradeResearchCost: 0
   - _upgradeFloatAmount: 7
-    _upgradeResearchCost: 100
+    _upgradeResearchCost: 800
   - _upgradeFloatAmount: 8
-    _upgradeResearchCost: 5000
+    _upgradeResearchCost: 2000
   - _upgradeFloatAmount: 10
     _upgradeResearchCost: 7000
   - _upgradeFloatAmount: 12

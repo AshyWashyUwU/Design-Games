@@ -31,7 +31,7 @@ public class CreatureHotbarButtonHandler : MonoBehaviour
 
     private void Update()
     {
-        if (_storedCreature == null) _buttonImage.color = _unselectedColor; return;
+        if (_storedCreature == null && _creatureButtonType == CreatureButtonType.HotbarButton) _buttonImage.color = _unselectedColor; return;
 
         if (TransformationDeviceHandler._instance._currentTransformedCreature == _storedCreature && _creatureButtonType == CreatureButtonType.HotbarButton)
         {

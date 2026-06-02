@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ComputerDataUploadTime
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   _upgradeTier:
-  - _upgradeFloatAmount: 1
+  - _upgradeFloatAmount: 0.5
     _upgradeResearchCost: 0
-  - _upgradeFloatAmount: 1
+  - _upgradeFloatAmount: 0.5
     _upgradeResearchCost: 200
   - _upgradeFloatAmount: 5
     _upgradeResearchCost: 1000
